@@ -3,7 +3,7 @@
 
 #let normalText = 10pt
 #let largeText = 3em
-#let hugeText = 22em
+#let hugeText = 18em
 #let title_main_1 = 2.5em
 #let title_main_2 = 1.8em
 #let title_main_3 = 2.2em
@@ -12,6 +12,11 @@
 #let title3 = 1.3em
 #let title4 = 1.2em
 #let title5 = 1.1em
+
+
+#let nocite(citation) = {
+  place(hide[#cite(citation)])
+}
 
 #let actual_figure = figure
 
@@ -52,15 +57,18 @@
     title
   )
   part_counter.step()
-  locate(loc => [
-    #part_location.update(x =>
-      loc
-    )
-  ])
   [
-    #set page(fill: mainColor.lighten(70%), numbering: none)
-    #place(top+right, text(fill: black, size: largeText, weight: "bold", part_state.display()))
+    #set page(margin: 2cm, fill: mainColor.lighten(70%), numbering: none)
+    #locate(loc => [
+      #part_location.update(x =>
+        loc
+      )
+    ])
+    #[
+    #set par(justify: false)
+    #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
     #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
+    ]
     #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: title2, textSize2: title3, textSize3: normalText, textSize4: normalText))
   ]
 }
@@ -100,16 +108,16 @@
   doc
 }
 
-#let my-bibliography(file, image:none,) = {
+#let my-bibliography(file, image:none) = {
   pagebreak_until_odd()
   counter(heading).update(0)
   heading_image.update(x =>
     image
   )
-  bibliography(file)
+  file
 }
 
-#let typst-orange(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter") = {
+#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter") = {
   set document(author: author, title: title)
   //set text(font: "Linux Libertine", lang: "it")
   //set text(font: "TeX Gyre Pagella", lang: "it")
@@ -187,6 +195,7 @@
   show heading: it => {
     set text(size: normalText)
     if it.level == 1 {
+      //set par(justify: false)
       counter(actual_figure.where(kind: image)).update(0)
       locate(loc => {
         let img = heading_image.at(loc)
@@ -290,7 +299,8 @@
       place(bottom, cover)
     }
     #if logo != none {
-        place(top + center, pad(top:1cm, image(logo, width: 3cm)))
+        set image(width: 3cm)
+        place(top + center, pad(top:1cm, logo))
     }
     #align(center + horizon, block(width: 100%, fill: mainColor.lighten(80%), height: 7.5cm, pad(x:2cm, y:1cm)[
       #par(leading: 0.4em)[

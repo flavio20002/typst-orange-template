@@ -1,4 +1,4 @@
-#import "../typst-orange.typ": project, part, chapter, my-bibliography, appendices
+#import "../../typst-orange.typ": project, part, chapter, my-bibliography, appendices
 
 #let mainColor = rgb("#F36619")
 
@@ -9,7 +9,7 @@
   author: "Goro Akechi",
   mainColor: mainColor,
   lang: "en",
-  cover: image("./background.svg"),
+  cover: image("./background.png"),
   imageIndex: image("./orange1.jpg"),
   listOfFigureTitle: "List of Figures",
   listOfTableTitle: "List of Tables",
