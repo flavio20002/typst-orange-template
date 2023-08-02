@@ -1,0 +1,29 @@
+{
+
+    "typst-lsp.exportPdf": "never",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 200,
+    "cSpell.enabled": true,
+    "cSpell.checkOnlyEnabledFileTypes": false,
+    "cSpell.language": "en,it",
+    "cSpell.words": [
+        "Autoformazione",
+        "Barisi",
+        "Beckhoff",
+        "chapter",
+        "Fira",
+        "GVLs",
+        "iecst",
+        "multicore",
+        "nums",
+        "pagebreak",
+        "parbreak",
+        "settick",
+        "Simulink",
+        "sottocartella",
+        "twincat",
+        "vals",
+        "Verl"
+    ],
+    "editor.tabSize": 2
+}
