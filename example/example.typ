@@ -1,5 +1,11 @@
 #import "../typst-orange.typ": project, part, chapter, my-bibliography, appendices
 
+//#set text(font: "Linux Libertine")
+//#set text(font: "TeX Gyre Pagella")
+#set text(font: "Lato")
+#show math.equation: set text(font: "Fira Math")
+#show raw: set text(font: "Fira Code")
+
 #let mainColor = rgb("#F36619")
 
 #show: project.with(
