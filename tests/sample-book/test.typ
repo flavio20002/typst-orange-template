@@ -2,6 +2,10 @@
 
 #let mainColor = rgb("#F36619")
 
+#set text(font: "Lato")
+#show math.equation: set text(font: "Fira Math")
+#show raw: set text(font: "Fira Code")
+
 #show: project.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
   subtitle: "A Practical Guide",
