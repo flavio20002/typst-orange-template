@@ -2,7 +2,7 @@
 
 #let normalText = 1em
 #let largeText = 3em
-#let hugeText = 18em
+#let hugeText = 16em
 #let title_main_1 = 2.5em
 #let title_main_2 = 1.8em
 #let title_main_3 = 2.2em
@@ -48,7 +48,7 @@
 }
 
 #let part(title, mainColor) = {
-  pagebreak(to: "even")
+  pagebreak(to: "odd")
   part_change.update(x =>
     true
   )
@@ -57,7 +57,6 @@
   )
   part_counter.step()
   [
-    #set page(margin: 2cm, fill: mainColor.lighten(70%), numbering: none)
     #locate(loc => [
       #part_location.update(x =>
         loc
@@ -65,6 +64,7 @@
     ])
     #[
     #set par(justify: false)
+    #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
     #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
     #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
     ]
@@ -123,31 +123,8 @@
 
   set page(
     paper: "a4",
-    margin: (x: 3cm, bottom: 2.5cm, top: 3cm)
-  )
-
-  set heading(
-    numbering: (..nums) => {
-      let vals = nums.pos()
-      if vals.len() == 1 {
-        return str(vals.first()) + "."
-      }
-      else {
-        return nums.pos().map(str).join(".")
-      }
-    },
-    supplement: supplementChapter
-  );
-
-  set list(tight:true, indent: 0.15cm ,body-indent: 0.4cm, marker: (place(center, dy: -0.12cm, text(size: 1.5em, fill: mainColor, "▶")), place(center, dy: 0.09cm, text(size: 0.6em, fill: mainColor, "◼"))))
-
-  show list: it  => {
-    parbreak()
-    it
-  }
-
-  set page(
-    header: locate(loc => {
+    margin: (x: 3cm, bottom: 2.5cm, top: 3cm),
+     header: locate(loc => {
       set text(size: title5)
       let page_number = counter(page).at(loc).first()
       let odd_page = calc.odd(page_number)
@@ -184,8 +161,28 @@
           ]
         }
       }
-    }),
+    })
   )
+
+  set heading(
+    numbering: (..nums) => {
+      let vals = nums.pos()
+      if vals.len() == 1 {
+        return str(vals.first()) + "."
+      }
+      else {
+        return nums.pos().map(str).join(".")
+      }
+    },
+    supplement: supplementChapter
+  );
+
+  set list(tight:true, indent: 0.15cm ,body-indent: 0.4cm, marker: (place(center, dy: -0.12cm, text(size: 1.5em, fill: mainColor, "▶")), place(center, dy: 0.09cm, text(size: 0.6em, fill: mainColor, "◼"))))
+
+  show list: it  => {
+    parbreak()
+    it
+  }
 
   show heading: it => {
     set text(size: fontSize)
