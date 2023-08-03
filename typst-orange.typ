@@ -1,4 +1,5 @@
 #import("my-outline.typ"): *
+#import("my-index.typ"): *
 
 #let normalText = 1em
 #let largeText = 3em
@@ -72,18 +73,12 @@
   ]
 }
 
-#let chapter(title, image:none, resetHeading: none) = {
+#let chapter(title, image:none) = {
   pagebreak(to: "odd")
   heading_image.update(x =>
     image
   )
-  if (resetHeading!=none){
-    counter(heading).update(0)
-    heading(level:1, title, numbering: none )
-  }
-  else{
-    heading(level:1, title )
-  }
+  heading(level:1, title )
   part_change.update(x =>
     false
   )
@@ -294,7 +289,7 @@
         set image(width: 3cm)
         place(top + center, pad(top:1cm, logo))
     }
-    #align(center + horizon, block(width: 100%, fill: mainColor.lighten(80%), height: 7.5cm, pad(x:2cm, y:1cm)[
+    #align(center + horizon, block(width: 100%, fill: mainColor.lighten(70%), height: 7.5cm, pad(x:2cm, y:1cm)[
       #par(leading: 0.4em)[
         #text(size: title_main_1, weight: "black", title)
       ]

@@ -1,10 +1,12 @@
-#import "../../typst-orange.typ": project, part, chapter, my-bibliography, appendices
+#import "../../typst-orange.typ": project, part, chapter, my-bibliography, appendices, make-index, index
 
-#let mainColor = rgb("#F36619")
-
+//#set text(font: "Linux Libertine")
+//#set text(font: "TeX Gyre Pagella")
 #set text(font: "Lato")
 #show math.equation: set text(font: "Fira Math")
 #show raw: set text(font: "Fira Code")
+
+#let mainColor = rgb("#F36619")
 
 #show: project.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
@@ -39,8 +41,10 @@
 #part("Part One Title", mainColor)
 
 #chapter("Sectioning Examples", image: image("./orange2.jpg"))
+#index("Sectioning")
 
 == Section Title
+#index("Sectioning!Sections")
 
 #lorem(50)
 #footnote[Footnote example text...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus,
@@ -49,6 +53,7 @@ imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcor
 #lorem(50)
 
 === Subsection Title
+#index("Sectioning!Subsections")
 
 #lorem(50)
 
@@ -57,11 +62,13 @@ imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcor
 #lorem(50)
 
 ==== Subsubsection Title
+#index("Sectioning!Subsubsections")
 
 #lorem(50)
 
 ===== Paragraph Title
 #lorem(50)
+#index("Sectioning!Paragraphs")
 
 #lorem(50)
 
@@ -97,12 +104,19 @@ imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcor
 
 
 == Referencing Publications
+#index("Citation")
 This statement requires citation @Smith:2022jd; this one is more specific @Smith:2021qr.
 == Link Examples
+#index("Links")
 == Lists
-=== Numbered List 
+#index("Lists")
+#index("Vocabulary")
+=== Numbered List
+#index("Lists!Numbered List")
 === Bullet Point List
-=== Descriptions and Definitions 
+#index("Lists!Bullet Points")
+=== Descriptions and Definitions
+#index("Lists!Descriptions and Definitions")
 == International Support 
 == Ligatures 
 
@@ -111,30 +125,37 @@ This statement requires citation @Smith:2022jd; this one is more specific @Smith
 #chapter("Mathematics", image: image("./orange2.jpg"))
 
 == Theorems
+#index("Theorems")
 === Several equations
+#index("Theorems!Several equations")
 === Single Line
+#index("Theorems!Single Line")
 == Definitions
+#index("Definitions")
 == Notations
+#index("Notations")
 == Remarks
+#index("Remarks")
 == Corollaries
+#index("Corollaries")
 == Propositions
+#index("Propositions")
 === Several equations
+#index("Propositions!Several equations")
 === Single Line
+#index("Propositions!Single Line")
 == Examples
-=== Equation Example 
+#index("Examples")
+=== Equation Example
+#index("Examples!Equation")
 === Text Example 
+#index("Examples!Text")
 == Exercises
+#index("Exercises")
 == Problems
+#index("Problems")
 == Vocabulary
-
-
-#chapter("Presenting Information and Results with a Long Chapter Title", image: image("./orange3.jpg"))
-== Table 
-== Figure
-
-#my-bibliography( bibliography("sample.bib"))
-
-#chapter("Index", resetHeading:true)
+#index("Vocabulary")
 
 #figure(
   image("placeholder.jpg", width: 60%),
@@ -179,15 +200,24 @@ This statement requires citation @Smith:2022jd; this one is more specific @Smith
 )
 
 
+#chapter("Presenting Information and Results with a Long Chapter Title", image: image("./orange3.jpg"))
+== Table
+#index("Table")
+== Figure
+#index("Figure")
+
+#my-bibliography( bibliography("sample.bib"))
+
+#make-index(title: "Index", mainColor:mainColor)
 
 #show: appendices.with("Appendices")
 
-#chapter("Appendix Chapter Title", image: image("./orange1.jpg"))
+#chapter("Appendix Chapter Title", image: image("./orange2.jpg"))
 
 == Appendix Section Title
 
 #lorem(50)
-#chapter("Appendix Chapter Title", image: image("./orange1.jpg"))
+#chapter("Appendix Chapter Title", image: image("./orange2.jpg"))
 
 == Appendix Section Title
 
