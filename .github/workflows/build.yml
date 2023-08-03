@@ -1,5 +1,9 @@
 name: Build Typst document
-on: [push, workflow_dispatch]
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: write

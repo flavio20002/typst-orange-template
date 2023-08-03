@@ -1,7 +1,6 @@
 #import("my-outline.typ"): *
 
-
-#let normalText = 10pt
+#let normalText = 1em
 #let largeText = 3em
 #let hugeText = 18em
 #let title_main_1 = 2.5em
@@ -117,13 +116,9 @@
   file
 }
 
-#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter") = {
+#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", fontSize: 10pt) = {
   set document(author: author, title: title)
-  //set text(font: "Linux Libertine", lang: "it")
-  //set text(font: "TeX Gyre Pagella", lang: "it")
-  set text(font: "Lato", size: normalText, lang: lang)
-  show math.equation: set text(font: "Fira Math")
-  show raw: set text(font: "Fira Code")
+  set text(size: normalText, lang: lang)
   set par(leading: 0.5em)
 
   set page(
@@ -193,7 +188,7 @@
   )
 
   show heading: it => {
-    set text(size: normalText)
+    set text(size: fontSize)
     if it.level == 1 {
       //set par(justify: false)
       counter(actual_figure.where(kind: image)).update(0)
@@ -315,7 +310,7 @@
   if (copyright!=none){
     set text(size: 10pt)
     show link: it => [
-      #set text(fill: mainColor,font: "Fira Code")
+      #set text(fill: mainColor)
       #it
     ]
     show par: set block(spacing: 2em)
@@ -327,11 +322,11 @@
     imageIndex
   )
 
-  my-outline(appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: title2, textSize2: title3, textSize3: normalText, textSize4: normalText)
+  my-outline(appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: title2, textSize2: title3, textSize3: fontSize, textSize4: fontSize)
 
-  my-outline-sec(listOfFigureTitle, actual_figure.where(kind: image), normalText)
+  my-outline-sec(listOfFigureTitle, actual_figure.where(kind: image), fontSize)
 
-  my-outline-sec(listOfTableTitle, actual_figure.where(kind: table), normalText)
+  my-outline-sec(listOfTableTitle, actual_figure.where(kind: table), fontSize)
 
 
   // Main body.
