@@ -168,7 +168,7 @@
         let counterInt = counter(heading).at(loc)
         if before != () and counterInt.len()> 2 {
           box(width: 100%, inset: (bottom: 5pt), stroke: (bottom: 0.5pt))[
-            #text(if appendix!= none {numbering("A.1", ..counterInt.slice(1,3)) + " " + before.last().body} else {numbering("1.1", ..counterInt.slice(1,3)) + " " + before.last().body})
+            #text(if appendix != none {numbering("A.1", ..counterInt.slice(1,3)) + " " + before.last().body} else {numbering("1.1", ..counterInt.slice(1,3)) + " " + before.last().body})
             #h(1fr)
             #page_number
           ]
@@ -180,7 +180,7 @@
           box(width: 100%, inset: (bottom: 5pt), stroke: (bottom: 0.5pt))[
             #page_number
             #h(1fr)
-            #text(weight: "bold", if appendix_state != none {numbering("A.1", counterInt) + ". " + before.last().body} else{before.last().supplement + " " + str(counterInt) + ". " + before.last().body})
+            #text(weight: "bold", if appendix != none {numbering("A.1", counterInt) + ". " + before.last().body} else{before.last().supplement + " " + str(counterInt) + ". " + before.last().body})
           ]
         }
       }
