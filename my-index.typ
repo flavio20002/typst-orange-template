@@ -35,7 +35,7 @@ figure(
         block(columns(2,gutter: 1cm, [
             #for sk in sortedkeys [
                 #let formattedPageNumbers = words.at(sk).map(en => {
-                    link((page: en.page, x:0pt, y:0pt))[#en.page]
+                    link((page: en.page, x:0pt, y:0pt), text(fill: black, str(en.page)))
                 })
                     #let firstCharacter = sk.first()
                     #if firstCharacter != register {

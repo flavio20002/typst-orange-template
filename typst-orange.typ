@@ -115,6 +115,8 @@
   set document(author: author, title: title)
   set text(size: normalText, lang: lang)
   set par(leading: 0.5em)
+  set enum(numbering: "1.a.i.")
+  set list(marker: ([•], [--], [◦]))
 
   set page(
     paper: "a4",
@@ -159,6 +161,11 @@
     })
   )
 
+  show cite: it  => {
+    show regex("\[(\d+)"): set text(mainColor)
+    it
+  }
+
   set heading(
     numbering: (..nums) => {
       let vals = nums.pos()
@@ -171,13 +178,6 @@
     },
     supplement: supplementChapter
   );
-
-  set list(tight:true, indent: 0.15cm ,body-indent: 0.4cm, marker: (place(center, dy: -0.12cm, text(size: 1.5em, fill: mainColor, "▶")), place(center, dy: 0.09cm, text(size: 0.6em, fill: mainColor, "◼"))))
-
-  show list: it  => {
-    parbreak()
-    it
-  }
 
   show heading: it => {
     set text(size: fontSize)
@@ -323,6 +323,7 @@
 
   // Main body.
   set par(justify: true)
+  show link: set text(fill: mainColor)
 
   body
 
