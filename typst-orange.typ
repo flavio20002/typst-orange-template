@@ -1,5 +1,12 @@
 #import("my-outline.typ"): *
 #import("my-index.typ"): *
+#import("theorems.typ"): *
+
+#let mathcal = (it) => {
+  set text(size: 1.3em, font: "OPTIOriginal", fallback: false)
+  it
+  h(0.1em)
+}
 
 #let normalText = 1em
 #let largeText = 3em
@@ -32,6 +39,8 @@
   )
 }
 
+#let language_state = state("language_state", none)
+#let main_color_state = state("main_color_state", none)
 #let appendix_state = state("appendix_state", none)
 #let heading_image = state("heading_image", none)
 #let part_state = state("part_state", none)
@@ -64,12 +73,12 @@
       )
     ])
     #[
-    #set par(justify: false)
-    #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
-    #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
-    #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
-    ]
-    #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: title2, textSize2: title3, textSize3: normalText, textSize4: normalText))
+      #set par(justify: false)
+      #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
+      #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
+      #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
+      ]
+      #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: title2, textSize2: title3, textSize3: normalText, textSize4: normalText))
   ]
 }
 
@@ -111,13 +120,51 @@
   file
 }
 
+#let theorem(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("theorem", if language=="en" {"Theorem"} else {"Teorema"},
+    stroke: 0.5pt + mainColor,
+    radius: 0em,
+    inset: 0.65em,
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(weight: "bold", fill: mainColor, x), 
+    fill: black.lighten(95%), 
+    base_level: 1)(name:name, body)
+  })
+}
+
+#let corollary = thmplain(
+  "corollary",
+  "Corollary",
+  base: "theorem",
+  titlefmt: strong
+)
+#let definition = thmbox("definition", "Definition", inset: (x: 1.2em, top: 1em))
+
+#let example = thmplain("example", "Example").with(numbering: none)
+#let proof = thmplain(
+  "proof",
+  "Proof",
+  base: "theorem",
+  bodyfmt: body => [#body #h(1fr) $square$]
+).with(numbering: none)
+
 #let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", fontSize: 10pt) = {
   set document(author: author, title: title)
   set text(size: normalText, lang: lang)
   set par(leading: 0.5em)
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
-
+  set math.equation(numbering: (..nums) => {
+      locate(loc => {
+        "(" + str(counter(heading).at(loc).at(0)) + "." + str(nums.pos().first()) + ")"
+      })
+      
+    },)
   set page(
     paper: "a4",
     margin: (x: 3cm, bottom: 2.5cm, top: 3cm),
@@ -184,6 +231,7 @@
     if it.level == 1 {
       //set par(justify: false)
       counter(actual_figure.where(kind: image)).update(0)
+      counter(math.equation).update(0)
       locate(loc => {
         let img = heading_image.at(loc)
         if img != none {
@@ -280,6 +328,8 @@
   // Title page.
   page(margin: 0cm, header: none)[
     #set text(fill: black)
+    #language_state.update(x => lang)
+    #main_color_state.update(x => mainColor)
     //#place(top, image("images/background2.jpg", width: 100%, height: 50%))
     #if cover != none {
       set image(width: 100%, height: 100%)

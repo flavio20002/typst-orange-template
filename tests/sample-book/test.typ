@@ -1,9 +1,10 @@
-#import "../../typst-orange.typ": project, part, chapter, my-bibliography, appendices, make-index, index
+#import "../../typst-orange.typ": project, part, chapter, my-bibliography, appendices, make-index, index, theorem, mathcal
 
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
 #set text(font: "Lato")
-#show math.equation: set text(font: "Fira Math")
+//#show math.equation: set text(font: "Fira Math")
+#show math.equation: set text(font: "Lato Math")
 #show raw: set text(font: "Fira Code")
 
 #let mainColor = rgb("#F36619")
@@ -151,11 +152,20 @@ fi fj fl ffl ffi Ty
 
 == Theorems
 #index("Theorems")
-This is a theorem consisting of several equations.
 === Several equations
 #index("Theorems!Several equations")
+This where is a theorem consisting of several equations.
+#theorem(name: "Name of the theorem")[
+  In $E=bb(R)^n$ all norms are equivalent. It has the properties:
+  $ abs(norm(bold(x)) - norm(bold(y))) <= norm(bold(x-y)) $
+  $ norm(sum_(i=1)^n bold(x)_i) <= sum_(i=1)^n norm(bold(x)_i) quad "where" n "is a finite integer" $
+]
+
 === Single Line
 #index("Theorems!Single Line")
+#theorem()[
+  A set $mathcal(D)(G)$  in dense in $L^2(G)$, $|dot|_0$.
+]
 == Definitions
 #index("Definitions")
 == Notations
@@ -195,13 +205,13 @@ This is a theorem consisting of several equations.
   inset: 10pt,
   align: horizon,
   [], [*Area*], [*Parameters*],
-  $ pi h (D^2 - d^2) / 4 $,
+  $pi h (D^2 - d^2) / 4$,
   [
     $h$: height \
     $D$: outer radius \
     $d$: inner radius
   ],
-  $ sqrt(2) / 12 a^3 $,
+  $sqrt(2) / 12 a^3$,
   [$a$: edge length]
   ),
   caption: [Table caption],
@@ -213,13 +223,13 @@ This is a theorem consisting of several equations.
   inset: 10pt,
   align: horizon,
   [], [*Area*], [*Parameters*],
-  $ pi h (D^2 - d^2) / 4 $,
+  $pi h (D^2 - d^2) / 4$,
   [
     $h$: height \
     $D$: outer radius \
     $d$: inner radius
   ],
-  $ sqrt(2) / 12 a^3 $,
+  $sqrt(2) / 12 a^3$,
   [$a$: edge length]
   ),
   caption: [Figure table],
