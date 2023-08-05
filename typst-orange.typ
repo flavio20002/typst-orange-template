@@ -57,7 +57,7 @@
   })
 }
 
-#let part(title, mainColor) = {
+#let part(title) = {
   pagebreak(to: "odd")
   part_change.update(x =>
     true
@@ -72,13 +72,18 @@
         loc
       )
     ])
-    #[
-      #set par(justify: false)
-      #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
-      #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
-      #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
+
+    #locate(loc => [
+      #let mainColor = main_color_state.at(loc)
+      #[
+        #set par(justify: false)
+        #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
+        #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
+        #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
       ]
       #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: title2, textSize2: title3, textSize3: normalText, textSize4: normalText))
+    ])
+      
   ]
 }
 
@@ -91,6 +96,10 @@
   part_change.update(x =>
     false
   )
+}
+
+#let make-index(title: none) = {
+  make-index-int(title:title, main_color_state: main_color_state)
 }
 
 #let appendices(title, doc) = {

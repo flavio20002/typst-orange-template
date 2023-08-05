@@ -9,9 +9,10 @@ figure(
     kind: index_string
 )))
 
-#let make-index(title: none, mainColor: blue) = {
+#let make-index-int(title: none, main_color_state:none) = {
     pagebreak(to: "odd")
     locate(loc => {
+        let mainColor = main_color_state.at(loc)
         let elements = query(selector(figure.where(kind: index_string)).before(loc), loc)
         let words = (:)
         for el in elements {

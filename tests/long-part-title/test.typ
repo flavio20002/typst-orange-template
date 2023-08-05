@@ -36,7 +36,7 @@
   ]
 )
 
-#part("This is a very long part title to test the layout", mainColor)
+#part("This is a very long part title to test the layout")
 
 #chapter("This is a very long chapter title to test the layout", image: image("./orange2.jpg"))
 
@@ -44,7 +44,7 @@
 
 === This is a very very very very very very very very very long subsection title to test the layout
 
-#part("This is a very long part title to test the layout", mainColor)
+#part("This is a very long part title to test the layout")
 
 #chapter("This is a very long chapter title to test the layout", image: image("./orange2.jpg"))
 
@@ -52,7 +52,7 @@
 
 === This is a very very very very very very very very very long subsection title to test the layout
 
-#part("This is a very long part title to test the layout", mainColor)
+#part("This is a very long part title to test the layout")
 
 #chapter("This is a very long chapter title to test the layout", image: image("./orange2.jpg"))
 
@@ -60,15 +60,15 @@
 
 === This is a very very very very very very very very very long subsection title to test the layout
 
-#part("This is a very long part title to test the layout", mainColor)
+#part("This is a very long part title to test the layout")
 
 #chapter("This is a very long chapter title to test the layout", image: image("./orange2.jpg"))
 
-#part("This is a very long part title to test the layout", mainColor)
+#part("This is a very long part title to test the layout")
 
 #chapter("This is a very long chapter title to test the layout", image: image("./orange2.jpg"))
 
-#part("This is a very long part title to test the layout", mainColor)
+#part("This is a very long part title to test the layout")
 
 #chapter("This is a very long chapter title to test the layout", image: image("./orange2.jpg"))
 

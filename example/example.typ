@@ -7,14 +7,12 @@
 #show math.equation: set text(font: "Lato Math")
 #show raw: set text(font: "Fira Code")
 
-#let mainColor = rgb("#F36619")
-
 #show: project.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
   subtitle: "A Practical Guide",
   date: "Anno scolastico 2023-2024",
   author: "Goro Akechi",
-  mainColor: mainColor,
+  mainColor: rgb("#F36619"),
   lang: "en",
   cover: image("./background.svg"),
   imageIndex: image("./orange1.jpg"),
@@ -39,7 +37,7 @@
   ]
 )
 
-#part("Part One Title", mainColor)
+#part("Part One Title")
 
 #chapter("Sectioning Examples", image: image("./orange2.jpg"))
 #index("Sectioning")
@@ -146,7 +144,7 @@ Lists are useful to present information in a concise and/or ordered way.
 == Ligatures 
 fi fj fl ffl ffi Ty
 
-#part("Part Two Title", mainColor)
+#part("Part Two Title")
 
 #chapter("Mathematics", image: image("./orange2.jpg"))
 
@@ -244,7 +242,7 @@ This where is a theorem consisting of several equations.
 
 #my-bibliography( bibliography("sample.bib"))
 
-#make-index(title: "Index", mainColor:mainColor)
+#make-index(title: "Index")
 
 #show: appendices.with("Appendices")
 
