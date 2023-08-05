@@ -50,7 +50,7 @@
       my-outline-row(insetSize: 2pt, textWeight: "bold", textSize: textSize2, textColor:mainColor, number: number, title: title, heading_page: heading_page, location: it.element.location())
     }
     else if it.level ==2 {
-      my-outline-row(insetSize: 1pt, textWeight: "bold", textSize: textSize3, textColor:black, number: number, title: title, heading_page: heading_page, location: it.element.location())
+      my-outline-row(insetSize: 2pt, textWeight: "bold", textSize: textSize3, textColor:black, number: number, title: title, heading_page: heading_page, location: it.element.location())
     } else {
        my-outline-row(textWeight: "regular", textSize: textSize4, textColor:black, number: number, title: title, heading_page: heading_page, location: it.element.location())
     }

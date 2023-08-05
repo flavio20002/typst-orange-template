@@ -161,6 +161,7 @@ This where is a theorem consisting of several equations.
 
 === Single Line
 #index("Theorems!Single Line")
+This is a theorem consisting of just one line.
 #theorem()[
   A set $mathcal(D)(G)$  in dense in $L^2(G)$, $|dot|_0$.
 ]

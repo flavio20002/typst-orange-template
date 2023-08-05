@@ -20,6 +20,11 @@
 #let title4 = 1.2em
 #let title5 = 1.1em
 
+#let outlinePart = 1.5em;
+#let outlineHeading1 = 1.3em;
+#let outlineHeading2 = 1.1em;
+#let outlineHeading3 = 1.1em;
+
 
 #let nocite(citation) = {
   place(hide[#cite(citation)])
@@ -81,7 +86,7 @@
         #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
         #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
       ]
-      #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: title2, textSize2: title3, textSize3: normalText, textSize4: normalText))
+      #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: outlinePart, textSize2: outlineHeading1, textSize3: outlineHeading2, textSize4: outlineHeading3))
     ])
       
   ]
@@ -164,7 +169,7 @@
 
 #let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", fontSize: 10pt) = {
   set document(author: author, title: title)
-  set text(size: normalText, lang: lang)
+  set text(size: fontSize, lang: lang)
   set par(leading: 0.5em)
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
@@ -373,11 +378,11 @@
     imageIndex
   )
 
-  my-outline(appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: title2, textSize2: title3, textSize3: fontSize, textSize4: fontSize)
+  my-outline(appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: outlinePart, textSize2: outlineHeading1, textSize3: outlineHeading2, textSize4: outlineHeading3)
 
-  my-outline-sec(listOfFigureTitle, actual_figure.where(kind: image), fontSize)
+  my-outline-sec(listOfFigureTitle, actual_figure.where(kind: image), outlineHeading3)
 
-  my-outline-sec(listOfTableTitle, actual_figure.where(kind: table), fontSize)
+  my-outline-sec(listOfTableTitle, actual_figure.where(kind: table), outlineHeading3)
 
 
   // Main body.
