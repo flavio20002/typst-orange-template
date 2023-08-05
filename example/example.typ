@@ -152,7 +152,7 @@ fi fj fl ffl ffi Ty
 #index("Theorems")
 === Several equations
 #index("Theorems!Several equations")
-This where is a theorem consisting of several equations.
+This is a theorem consisting of several equations.
 #theorem(name: "Name of the theorem")[
   In $E=bb(R)^n$ all norms are equivalent. It has the properties:
   $ abs(norm(bold(x)) - norm(bold(y))) <= norm(bold(x-y)) $
