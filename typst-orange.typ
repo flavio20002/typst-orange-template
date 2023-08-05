@@ -173,22 +173,17 @@
   set par(leading: 0.5em)
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
-  // show math.equation.where(block: true): e => {
-  //   counter(math.equation).step()
-  //   locate(loc => {
-  //     pad(left: 3em, box({
-  //       box(e)
-  //       h(1fr)
-  //       "(" + str(counter(heading).at(loc).at(0)) + "." + str(counter(math.equation).at(loc).first()) + ")"
-  //     }))
-  //   })
-  // }
-  set math.equation(numbering: (..nums) => {
-      locate(loc => {
-        "(" + str(counter(heading).at(loc).at(0)) + "." + str(nums.pos().first()) + ")"
+  show math.equation.where(block: true): e => {
+    counter(math.equation).step()
+    locate(loc => {
+      pad(left: 1cm, {
+        box(baseline: 50%, e)
+        h(1fr)
+        box(baseline: 50%, "(" + str(counter(heading).at(loc).at(0)) + "." + str(counter(math.equation).at(loc).first()) + ")")
       })
-      
-  },)
+    })
+  }
+
   set page(
     paper: "a4",
     margin: (x: 3cm, bottom: 2.5cm, top: 3cm),
