@@ -14,16 +14,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Typst
-        uses: lvignoli/typst-action@v0
+      - name: Install just from crates.io
+        uses: baptiste0928/cargo-install@v2
         with:
-          source_file: |
-            example/example.typ
-          options: |
-              --font-path
-              fonts
-              --root
-              /github/workspace
+          crate: just
+      - uses: yusancky/setup-typst@v2
+        id: setup-typst
+        with:
+          version: 'v0.7.0'
+      - run: |
+          just build
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
