@@ -18,7 +18,7 @@ while :; do
 done
 
 
-TYPST_VERSION="v0.6.0"
+TYPST_VERSION="v0.7.0"
 TYPST_BASE_URL="https://github.com/typst/typst/releases/download"
 TYPST_ARCHIVE="typst-x86_64-unknown-linux-musl.tar.xz"
 
@@ -83,7 +83,7 @@ function update_test_ref()
 
     echo "[UPDATING] ${NAME}"
 
-    typst --root "$TYPST_ROOT" --font-path "$TYPST_ROOT/fonts" compile test.typ "ref{n}.png"
+    typst compile test.typ "ref{n}.png" --root "$TYPST_ROOT" --font-path "$TYPST_ROOT/fonts" 
   )
 }
 
@@ -98,7 +98,7 @@ function run_test()
 
     if [[ ! -f test.typ ]]; then echo "Missing file 'test.typ'!"; exit 1; fi
 
-    typst --root "$TYPST_ROOT" --font-path "$TYPST_ROOT/fonts" compile test.typ "res{n}.png"
+    typst compile test.typ "res{n}.png" --root "$TYPST_ROOT" --font-path "$TYPST_ROOT/fonts" 
 
 
     for res_file in res*.png; do

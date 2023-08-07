@@ -4,7 +4,7 @@
     {
       "label": "typst compile",
       "type": "shell",
-      "command": "typst --root . --font-path fonts watch ${file} --open",
+      "command": "typst watch ${file} --open --root . --font-path fonts ",
       "problemMatcher": [],
       "group": {
         "kind": "build",
