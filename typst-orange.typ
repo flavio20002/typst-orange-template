@@ -263,7 +263,7 @@
                 rest: 2pt + mainColor,
             ),
             inset: (left:2em, rest: 1.6em),
-            fill: white,
+            fill: rgb("#FFFFFFAA"),
             radius: (
                 right: 0pt,
                 left: 10pt,
