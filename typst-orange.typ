@@ -238,8 +238,12 @@
       if vals.len() == 1 {
         return str(vals.first()) + "."
       }
-      else {
-        return nums.pos().map(str).join(".")
+      else if vals.len() <=4 {
+        let color = mainColor
+        if vals.len() == 4 {
+          color = black
+        }
+        return place(dx:-4.5cm, box(width: 4cm, align(right, text(fill: color)[#nums.pos().map(str).join(".")])))
       }
     },
     supplement: supplementChapter
@@ -309,20 +313,13 @@
         color = black
       }
       set text(size: size)
-      locate(loc => {
-      [
-        #if (it.numbering!=none){
-          place(dx:-4.5cm, box(width: 4cm, align(right, text(fill: color)[#counter(heading).display(it.numbering)])))
-        }
-        #it.body
-        #v(space, weak: true)
-        ]
-      }
-      )
+      it
+      v(space, weak: true)
     }
     else {
-      parbreak()
-      text(weight: "bold", it.body)
+      //v(1em, weak: true)
+      //h(-1em)
+      box(it)
       h(0.5em)
     } 
   }
@@ -392,6 +389,11 @@
 
   // Main body.
   set par(justify: true)
+  // show par: set block(spacing: 0.5em)
+  // set par(
+  //   first-line-indent: 1em,
+  //   justify: true,
+  // )
   show link: set text(fill: mainColor)
 
   body
