@@ -118,7 +118,14 @@
         return str(numbering("A.1", ..vals)) + "."
       }
       else {
-        return numbering("A.1", ..vals)
+        locate(loc => [
+        #let mainColor = main_color_state.at(loc)
+        #let color = mainColor
+        #if vals.len() == 4 {
+          color = black
+        }
+        #return place(dx:-4.5cm, box(width: 4cm, align(right, text(fill: color)[#numbering("A.1", ..vals)])))
+        ])
       }
     },
   )
@@ -183,6 +190,8 @@
       })
     })
   }
+
+  show terms: set par(first-line-indent: 0em)
 
   set page(
     paper: "a4",
@@ -317,10 +326,7 @@
       v(space, weak: true)
     }
     else {
-      //v(1em, weak: true)
-      //h(-1em)
-      box(it)
-      h(0.5em)
+      it
     } 
   }
 
@@ -388,12 +394,11 @@
 
 
   // Main body.
-  set par(justify: true)
-  // show par: set block(spacing: 0.5em)
-  // set par(
-  //   first-line-indent: 1em,
-  //   justify: true,
-  // )
+  show par: set block(spacing: 0.5em)
+  set par(
+    first-line-indent: 1em,
+    justify: true,
+  )
   show link: set text(fill: mainColor)
 
   body

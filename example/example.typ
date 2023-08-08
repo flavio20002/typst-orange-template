@@ -63,12 +63,12 @@ imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcor
 ==== Subsubsection Title
 #index("Sectioning!Subsubsections")
 
-#lorem(50)
+#lorem(100)
 
 ===== Paragraph Title
-#lorem(50)
 #index("Sectioning!Paragraphs")
-
+#lorem(50)
+#lorem(50)
 #lorem(50)
 
 #lorem(50)
@@ -136,10 +136,8 @@ Lists are useful to present information in a concise and/or ordered way.
 / Word: Definition
 / Comment: Elaboration
 == International Support
-àáâäãåèéêëìíîïòóôöõøùúûüÿýñçˇcšž
-
-ÀÁÂÄÃÅÈÉÊËÌÍÎÏÒÓÔÖÕØÙÚÛÜŸÝÑ
-
+àáâäãåèéêëìíîïòóôöõøùúûüÿýñçˇcšž \
+ÀÁÂÄÃÅÈÉÊËÌÍÎÏÒÓÔÖÕØÙÚÛÜŸÝÑ \
 ßÇŒÆ ˇCŠŽ
 == Ligatures 
 fi fj fl ffl ffi Ty

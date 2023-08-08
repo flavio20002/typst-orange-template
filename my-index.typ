@@ -11,6 +11,7 @@ figure(
 
 #let make-index-int(title: none, main_color_state:none) = {
     pagebreak(to: "odd")
+    set par(first-line-indent: 0em)
     locate(loc => {
         let mainColor = main_color_state.at(loc)
         let elements = query(selector(figure.where(kind: index_string)).before(loc), loc)
