@@ -340,13 +340,6 @@
 
   set underline(offset: 3pt)
 
-  //Structured text language
-  show raw.where(lang: "iecst"): it => [
-    #show regex("\b(VAR_GLOBAL|END_VAR|BOOL)\b") : keyword => text(weight:"bold", fill: blue, keyword)
-      #show regex(";|:") : keyword => text(weight:"bold", fill: blue, keyword)
-    #it
-  ]
-
   // Title page.
   page(margin: 0cm, header: none)[
     #set text(fill: black)
