@@ -67,7 +67,8 @@ imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcor
 
 ===== Paragraph Title
 #index("Sectioning!Paragraphs")
-
+#lorem(50)
+#lorem(50)
 #lorem(50)
 
 #lorem(50)
@@ -149,7 +150,7 @@ fi fj fl ffl ffi Ty
 #index("Theorems")
 === Several equations
 #index("Theorems!Several equations")
-This where is a theorem consisting of several equations.
+This is a theorem consisting of several equations.
 #theorem(name: "Name of the theorem")[
   In $E=bb(R)^n$ all norms are equivalent. It has the properties:
   $ abs(norm(bold(x)) - norm(bold(y))) <= norm(bold(x-y)) $
@@ -189,54 +190,77 @@ This is a theorem consisting of just one line.
 == Vocabulary
 #index("Vocabulary")
 
-#figure(
-  image("placeholder.jpg", width: 60%),
-  caption: [Figure caption],
-)
-
-
-#figure(
-  table(
-  columns: (1fr, auto, auto),
-  inset: 10pt,
-  align: horizon,
-  [], [*Area*], [*Parameters*],
-  $pi h (D^2 - d^2) / 4$,
-  [
-    $h$: height \
-    $D$: outer radius \
-    $d$: inner radius
-  ],
-  $sqrt(2) / 12 a^3$,
-  [$a$: edge length]
-  ),
-  caption: [Table caption],
-)
-
-#figure(
-  table(
-  columns: (1fr, auto, auto),
-  inset: 10pt,
-  align: horizon,
-  [], [*Area*], [*Parameters*],
-  $pi h (D^2 - d^2) / 4$,
-  [
-    $h$: height \
-    $D$: outer radius \
-    $d$: inner radius
-  ],
-  $sqrt(2) / 12 a^3$,
-  [$a$: edge length]
-  ),
-  caption: [Figure table],
-)
-
-
 #chapter("Presenting Information and Results with a Long Chapter Title", image: image("./orange3.jpg"))
 == Table
 #index("Table")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet
+urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie.
+Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl.
+Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus
+tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.
+
+#figure(
+  table(
+  columns: (auto, auto, auto),
+  inset: 10pt,
+  align: horizon,
+  [*Treatments*], [*Response 1*], [*Response 2*],
+  [Treatment 1],
+  [0.0003262],
+  [0.562],
+  [Treatment 2],
+  [0.0015681],
+  [0.910],
+  [Treatment 3],
+  [0.0009271],
+  [0.296],
+  ),
+  caption: [Table caption.],
+) <table>
+
+Referencing @table in-text using its label.
+
 == Figure
 #index("Figure")
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet
+urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie.
+Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl.
+Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus
+tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.
+
+#figure(
+  image("creodocs_logo.svg", width: 50%),
+  caption: [Figure caption.],
+) <figure>
+
+Referencing @figure in-text using its label.
+
+#figure(
+  placement: top,
+  table(
+  columns: (auto, auto, auto),
+  inset: 10pt,
+  align: horizon,
+  [*Treatments*], [*Response 1*], [*Response 2*],
+  [Treatment 1],
+  [0.0003262],
+  [0.562],
+  [Treatment 2],
+  [0.0015681],
+  [0.910],
+  [Treatment 3],
+  [0.0009271],
+  [0.296],
+  ),
+  caption: [Floating table.],
+) <table1>
+
+#figure(
+  placement: bottom,
+  image("creodocs_logo.svg", width: 100%),
+  caption: [Floating figure.],
+) <figure1>
 
 #my-bibliography( bibliography("sample.bib"))
 

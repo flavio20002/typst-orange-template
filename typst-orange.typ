@@ -30,20 +30,6 @@
   place(hide[#cite(citation)])
 }
 
-#let actual_figure = figure
-
-#let figure(..args, label:none) = {
-  locate(loc => {
-      let chapter = counter(heading.where(level: 1)).at(loc).first()
-      set actual_figure(numbering: it => box[#chapter.#it])
-      [
-        #actual_figure(..args)
-        #label
-      ]
-    }
-  )
-}
-
 #let language_state = state("language_state", none)
 #let main_color_state = state("main_color_state", none)
 #let appendix_state = state("appendix_state", none)
@@ -191,6 +177,34 @@
     })
   }
 
+  // show figure: it => align(center)[
+  //   #locate(loc => {
+  //     let chapter = counter(heading.where(level: 1)).at(loc).first()
+  //     it.caption 
+  //     emph [
+  //       #it.supplement
+  //       #box[#chapter.#it.counter.display()])
+  //     ]
+  //     v(10pt, weak: true)
+  //     it.body
+  //   }
+  //   )
+  // ]
+
+  set figure(gap: 1.3em,
+  numbering: it => {
+    locate(loc => {
+      let chapter = counter(heading.where(level: 1)).at(loc).first()
+      box[#chapter.#it]
+    })
+  })
+
+  show figure: it => align(center)[
+    #it
+    #v(2.6em, weak: true)
+  ]
+
+
   show terms: set par(first-line-indent: 0em)
 
   set page(
@@ -262,7 +276,8 @@
     set text(size: fontSize)
     if it.level == 1 {
       //set par(justify: false)
-      counter(actual_figure.where(kind: image)).update(0)
+      counter(figure.where(kind: image)).update(0)
+      counter(figure.where(kind: table)).update(0)
       counter(math.equation).update(0)
       locate(loc => {
         let img = heading_image.at(loc)
@@ -330,14 +345,6 @@
     } 
   }
 
-  set actual_figure(gap: 1.3em)
-
-  show actual_figure: it => align(center)[
-    #v(2.6em, weak: true)
-    #it
-    #v(2.6em, weak: true)
-  ]
-
   set underline(offset: 3pt)
 
   // Title page.
@@ -381,9 +388,9 @@
 
   my-outline(appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: outlinePart, textSize2: outlineHeading1, textSize3: outlineHeading2, textSize4: outlineHeading3)
 
-  my-outline-sec(listOfFigureTitle, actual_figure.where(kind: image), outlineHeading3)
+  my-outline-sec(listOfFigureTitle, figure.where(kind: image), outlineHeading3)
 
-  my-outline-sec(listOfTableTitle, actual_figure.where(kind: table), outlineHeading3)
+  my-outline-sec(listOfTableTitle, figure.where(kind: table), outlineHeading3)
 
 
   // Main body.
