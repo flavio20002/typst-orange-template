@@ -19,6 +19,8 @@
   listOfFigureTitle: "List of Figures",
   listOfTableTitle: "List of Tables",
   supplementChapter: "Chapter",
+  supplementPart: "PART",
+  part_style: 0,
   copyright: [
     Copyright © 2023 Flavio Barisi
 

@@ -34,6 +34,8 @@
 #let main_color_state = state("main_color_state", none)
 #let appendix_state = state("appendix_state", none)
 #let heading_image = state("heading_image", none)
+#let supplement_part_state = state("supplement_part", none)
+#let part_style_state = state("part_style", 0)
 #let part_state = state("part_state", none)
 #let part_location = state("part_location", none)
 #let part_counter = counter("part_counter")
@@ -66,11 +68,22 @@
 
     #locate(loc => [
       #let mainColor = main_color_state.at(loc)
-      #[
+      #let part_style = part_style_state.at(loc)
+      #let supplement_part = supplement_part_state.at(loc)
+      #if part_style == 0 [
         #set par(justify: false)
         #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
         #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
         #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
+      ]
+      else if part_style == 1 [
+        #set par(justify: false)
+        #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
+        #place(top+left)[
+          #block(text(fill: black, size: 2.5em, weight: "bold", supplement_part + " " + part_counter.display("I")))
+          #v(1cm, weak: true)
+          #move(dx: -4pt, block(text(fill: mainColor, size: 6em, weight: "bold", part_state.display())))
+        ]
       ]
       #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: outlinePart, textSize2: outlineHeading1, textSize3: outlineHeading2, textSize4: outlineHeading3))
     ])
@@ -160,7 +173,7 @@
   bodyfmt: body => [#body #h(1fr) $square$]
 ).with(numbering: none)
 
-#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", fontSize: 10pt) = {
+#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", supplementPart: "PART", fontSize: 10pt, part_style: 0) = {
   set document(author: author, title: title)
   set text(size: fontSize, lang: lang)
   set par(leading: 0.5em)
@@ -176,20 +189,6 @@
       })
     })
   }
-
-  // show figure: it => align(center)[
-  //   #locate(loc => {
-  //     let chapter = counter(heading.where(level: 1)).at(loc).first()
-  //     it.caption 
-  //     emph [
-  //       #it.supplement
-  //       #box[#chapter.#it.counter.display()])
-  //     ]
-  //     v(10pt, weak: true)
-  //     it.body
-  //   }
-  //   )
-  // ]
 
   set figure(gap: 1.3em,
   numbering: it => {
@@ -352,6 +351,8 @@
     #set text(fill: black)
     #language_state.update(x => lang)
     #main_color_state.update(x => mainColor)
+    #part_style_state.update(x => part_style)
+    #supplement_part_state.update(x => supplementPart)
     //#place(top, image("images/background2.jpg", width: 100%, height: 50%))
     #if cover != none {
       set image(width: 100%, height: 100%)
