@@ -75,8 +75,7 @@
         #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
         #place(top+right, text(fill: black, size: largeText, weight: "bold", box(width: 60%, part_state.display())))
         #place(top+left, text(fill: mainColor, size: hugeText, weight: "bold", part_counter.display("I")))
-      ]
-      else if part_style == 1 [
+      ] else if part_style == 1 [
         #set par(justify: false)
         #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: mainColor.lighten(70%)))
         #place(top+left)[

@@ -10,23 +10,50 @@ figure(
 )))
 
 #let make-index-int(title: none, main_color_state:none) = {
+
+    let content-text(content) = {
+        let ct = ""
+        if content.has("text") {
+            ct = content.text
+        }
+        else {
+            for cc in content.children {
+                if cc.has("text") {
+                    ct += cc.text
+                }
+            }
+        }
+        return ct
+    }
+    
     pagebreak(to: "odd")
     set par(first-line-indent: 0em)
     locate(loc => {
         let mainColor = main_color_state.at(loc)
-        let elements = query(selector(figure.where(kind: index_string)).before(loc), loc)
+            let elements = query(selector(figure.where(kind: index_string)).before(loc), loc)
         let words = (:)
         for el in elements {
             let ct = ""
-            ct = el.caption.text
+            if el.caption.has("body"){
+                ct = content-text(el.caption.body)
+            }
+            else{
+                ct = content-text(el.caption)
+            }
+
+            // Have we already know that entry text? If not,
+            // add it to our list of entry words
             if words.keys().contains(ct) != true {
                 words.insert(ct, ())
             }
+
+            // Add the new page entry to the list.
             let ent = (class: el.body.text, page: el.location().page())
             if not words.at(ct).contains(ent){
                 words.at(ct).push(ent)
             }
         }
+
 
         let sortedkeys = words.keys().sorted()
 
@@ -50,8 +77,7 @@ figure(
                     #if(sk.contains("!")){
                         h(2em)
                         sk.slice(sk.position("!")+1)
-                    }
-                    else{
+                    }else{
                      sk
                     }
                     #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
