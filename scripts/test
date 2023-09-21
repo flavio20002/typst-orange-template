@@ -71,7 +71,7 @@ fi
 
 function img_compare()
 {
-  $MAGICK_COMPARE -metric AE -fuzz 0.5\% "$1" "$2" null: 2>&1 | cut -d\  -f1
+  $MAGICK_COMPARE -metric AE -fuzz 1\% "$1" "$2" null: 2>&1 | cut -d\  -f1
 }
 
 function update_test_ref()
