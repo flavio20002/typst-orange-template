@@ -19,7 +19,7 @@
   listOfFigureTitle: "List of Figures",
   listOfTableTitle: "List of Tables",
   supplementChapter: "Chapter",
-  supplementPart: "PART",
+  supplementPart: "Part",
   part_style: 0,
   copyright: [
     Copyright © 2023 Flavio Barisi
@@ -39,9 +39,9 @@
   ]
 )
 
-#part("Part One Title")
+#part("Part One Title") 
 
-#chapter("Sectioning Examples", image: image("./orange2.jpg"))
+#chapter("Sectioning Examples", image: image("./orange2.jpg"), l: "chap1")
 #index("Sectioning")
 
 == Section Title
@@ -143,6 +143,10 @@ Lists are useful to present information in a concise and/or ordered way.
 ßÇŒÆ ˇCŠŽ
 == Ligatures 
 fi fj fl ffl ffi Ty
+
+== Referencing Chapters
+#index("Referencing")
+This statement references to another chapter @chap1
 
 #part("Part Two Title")
 

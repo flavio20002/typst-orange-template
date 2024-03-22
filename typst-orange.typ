@@ -84,18 +84,22 @@
           #move(dx: -4pt, block(text(fill: mainColor, size: 6em, weight: "bold", part_state.display())))
         ]
       ]
-      #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: outlinePart, textSize2: outlineHeading1, textSize3: outlineHeading2, textSize4: outlineHeading3))
+            #align(bottom+right, my-outline-small(title, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: outlinePart, textSize2: outlineHeading1, textSize3: outlineHeading2, textSize4: outlineHeading3))
     ])
       
   ]
 }
 
-#let chapter(title, image:none) = {
+#let chapter(title, image:none, l: none) = {
   pagebreak(to: "odd")
   heading_image.update(x =>
     image
   )
-  heading(level:1, title )
+  if l != none [
+    #heading(level: 1, title) #label(l)
+  ] else [
+    #heading(level: 1, title) 
+  ]
   part_change.update(x =>
     false
   )
@@ -172,7 +176,7 @@
   bodyfmt: body => [#body #h(1fr) $square$]
 ).with(numbering: none)
 
-#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", supplementPart: "PART", fontSize: 10pt, part_style: 0) = {
+#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", supplementPart: "Part", fontSize: 10pt, part_style: 0) = {
   set document(author: author, title: title)
   set text(size: fontSize, lang: lang)
   set par(leading: 0.5em)
