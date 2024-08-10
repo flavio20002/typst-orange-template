@@ -17,6 +17,6 @@ jobs:
       - uses: yusancky/setup-typst@v2
         id: setup-typst
         with:
-          version: 'v0.10.0'
+          version: 'v0.11.1'
       - run: |
           just test
