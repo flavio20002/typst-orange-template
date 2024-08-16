@@ -308,7 +308,7 @@
   })
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", supplementPart: "Part", fontSize: 10pt, part_style: 0) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", supplementPart: "Part", fontSize: 10pt, part_style: 0) = {
   set document(author: author, title: title)
   set text(size: fontSize, lang: lang)
   set par(leading: 0.5em)
@@ -341,7 +341,7 @@
   show terms: set par(first-line-indent: 0em)
 
   set page(
-    paper: "a4",
+    paper: paper-size,
     margin: (x: 3cm, bottom: 2.5cm, top: 3cm),
      header: locate(loc => {
       set text(size: title5)
