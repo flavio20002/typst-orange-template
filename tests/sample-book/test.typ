@@ -1,4 +1,4 @@
-#import "../../typst-orange.typ": project, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, mathcal
+#import "../../typst-orange.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, mathcal
 
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
@@ -7,7 +7,7 @@
 #show math.equation: set text(font: "Lato Math")
 #show raw: set text(font: "Fira Code")
 
-#show: project.with(
+#show: book.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
   subtitle: "A Practical Guide",
   date: "Anno scolastico 2023-2024",

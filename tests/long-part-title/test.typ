@@ -1,4 +1,4 @@
-#import "../../typst-orange.typ": project, part, chapter, my-bibliography, appendices
+#import "../../typst-orange.typ": book, part, chapter, my-bibliography, appendices
 
 #let mainColor = rgb("#F36619")
 
@@ -6,7 +6,7 @@
 #show math.equation: set text(font: "Fira Math")
 #show raw: set text(font: "Fira Code")
 
-#show: project.with(
+#show: book.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
   subtitle: "A Practical Guide",
   date: "Anno scolastico 2023-2024",

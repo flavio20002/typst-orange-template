@@ -1,10 +1,10 @@
-#import "../../typst-orange.typ": project, part, chapter, my-bibliography, appendices, make-index, index, theorem, mathcal
+#import "../../typst-orange.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, mathcal
 
 #set text(font: "Lato")
 #show math.equation: set text(font: "Lato Math")
 #show raw: set text(font: "Fira Code")
 
-#show: project.with(
+#show: book.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
   subtitle: "A Practical Guide",
   date: "Anno scolastico 2023-2024",
