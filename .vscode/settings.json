@@ -1,8 +1,5 @@
 {
-
     "typst-lsp.exportPdf": "never",
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 200,
     "cSpell.enabled": true,
     "cSpell.checkOnlyEnabledFileTypes": false,
     "cSpell.language": "en,it",

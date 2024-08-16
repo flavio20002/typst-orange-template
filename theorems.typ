@@ -19,6 +19,7 @@
     base: base,
     base_level: base_level
   ) => {
+    set par(first-line-indent: 0em)
     let number = none
     if not numbering == none {
       locate(loc => {

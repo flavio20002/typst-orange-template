@@ -160,21 +160,153 @@
   })
 }
 
-#let corollary = thmplain(
-  "corollary",
-  "Corollary",
-  base: "theorem",
-  titlefmt: strong
-)
-#let definition = thmbox("definition", "Definition", inset: (x: 1.2em, top: 1em))
+#let definition(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("definition", if language=="en" {"Definition"} else {"Definizione"},
+    stroke: (left: 4pt + mainColor),
+    radius: 0em,
+    inset: (x: 0.65em),
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(weight: "bold", x), 
+    base_level: 1)(name:name, body)
+  })
+}
 
-#let example = thmplain("example", "Example").with(numbering: none)
-#let proof = thmplain(
-  "proof",
-  "Proof",
-  base: "theorem",
-  bodyfmt: body => [#body #h(1fr) $square$]
-).with(numbering: none)
+#let corollary(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("corollary", if language=="en" {"Corollary"} else {"Corollario"},
+    stroke: (left: 4pt + gray),
+    radius: 0em,
+    inset: 0.65em,
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(weight: "bold", x),
+    fill: black.lighten(95%), 
+    base_level: 1)(name:name, body)
+  })
+}
+
+
+#let proposition(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("proposition", if language=="en" {"Proposition"} else {"Proposizione"},
+    radius: 0em,
+    inset: 0em,
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(weight: "bold", fill: mainColor, x),
+    base_level: 1)(name:name, body)
+  })
+}
+
+
+#let notation(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("notation", if language=="en" {"Notation"} else {"Nota"},
+    stroke: none,
+    radius: 0em,
+    inset: 0em,
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(weight: "bold", x), 
+    base_level: 1)(name:name, body)
+  })
+}
+
+#let exercise(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("exercise", if language=="en" {"Exercise"} else {"Esercizio"},
+    stroke: (left: 4pt + mainColor),
+    radius: 0em,
+    inset: 0.65em,
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(fill: mainColor, weight: "bold", x),
+    fill: mainColor.lighten(90%), 
+    base_level: 1)(name:name, body)
+  })
+}
+
+#let example(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("example", if language=="en" {"Example"} else {"Esempio"},
+    stroke: none,
+    radius: 0em,
+    inset: 0em,
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(weight: "bold", x), 
+    base_level: 1)(name:name, body)
+  })
+}
+
+#let problem(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("problem", if language=="en" {"Problem"} else {"Problema"},
+    stroke: none,
+    radius: 0em,
+    inset: 0em,
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(fill: mainColor, weight: "bold", x), 
+    base_level: 1)(name:name, body)
+  })
+}
+
+#let vocabulary(name: none, body) = {
+  locate(loc => {
+    let language = language_state.at(loc)
+    let mainColor = main_color_state.at(loc)
+    thmbox("vocabulary", if language=="en" {"Vocabulary"} else {"Vocabolario"},
+    stroke: none,
+    radius: 0em,
+    inset: 0em,
+    padding: (top: 0em, bottom: 0em),
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => [■ #text(weight: "bold", x)], 
+    base_level: 1)(name:name, body)
+  })
+}
+
+#let remark(body) = {
+   locate(loc => {
+    let mainColor = main_color_state.at(loc)
+    set par(first-line-indent: 0em)
+    grid(
+    columns: (1.2cm, 1fr),
+    align: (center, left),
+    rows: (auto),
+    circle(radius: 0.3cm, fill: mainColor.lighten(70%), stroke: mainColor.lighten(30%))[
+      #set align(center + horizon)
+      #set text(fill: mainColor, weight: "bold")
+      R
+    ],
+    body)
+  })
+}
 
 #let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", supplementPart: "Part", fontSize: 10pt, part_style: 0) = {
   set document(author: author, title: title)
@@ -205,7 +337,6 @@
     #it
     #v(2.6em, weak: true)
   ]
-
 
   show terms: set par(first-line-indent: 0em)
 
