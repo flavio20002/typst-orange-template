@@ -1,4 +1,4 @@
-#import "../../typst-orange.typ": book, part, chapter, my-bibliography, appendices
+#import "../../lib.typ": book, part, chapter, my-bibliography, appendices
 
 #let main-color = rgb("#F36619")
 

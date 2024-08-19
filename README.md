@@ -3,7 +3,7 @@ See the example pdf in the Release section of this project
 
 To compile the example:
 
-    typst watch ./example/example.typ --root . --font-path fonts 
+    typst watch ./example/main.typ --root . --font-path fonts 
 
 
 This template was realized with the help of:

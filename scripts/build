@@ -68,5 +68,5 @@ if ! hash typst; then
   exit 1
 fi
 
-typst compile example/example.typ --root "$TYPST_ROOT" --font-path "$TYPST_ROOT/fonts" 
+typst compile example/main.typ --root "$TYPST_ROOT" --font-path "$TYPST_ROOT/fonts" 
 echo "[  OK]"

@@ -1,4 +1,4 @@
-#import "../../typst-orange.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, mathcal
+#import "../../lib.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, mathcal
 
 #set text(font: "Lato")
 #show math.equation: set text(font: "Lato Math")

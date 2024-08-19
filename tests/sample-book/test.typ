@@ -1,4 +1,4 @@
-#import "../../typst-orange.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, mathcal
+#import "../../lib.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, mathcal
 
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
