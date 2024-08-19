@@ -9,13 +9,13 @@
   subtitle: "A Practical Guide",
   date: "Anno scolastico 2023-2024",
   author: "Goro Akechi",
-  mainColor: rgb("#F36619"),
+  main-color: rgb("#F36619"),
   lang: "en",
-  listOfFigureTitle: "List of Figures",
-  listOfTableTitle: "List of Tables",
-  supplementChapter: "Chapter",
-  supplementPart: "PART",
-  part_style: 1,
+  list-of-figure-title: "List of Figures",
+  list-of-table-title: "List of Tables",
+  supplement-chapter: "Chapter",
+  supplement-part: "PART",
+  part-style: 1,
   copyright: [
     Copyright © 2023 Flavio Barisi
 

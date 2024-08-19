@@ -1,6 +1,6 @@
 #import "../../typst-orange.typ": book, part, chapter, my-bibliography, appendices
 
-#let mainColor = rgb("#F36619")
+#let main-color = rgb("#F36619")
 
 #set text(font: "Lato")
 #show math.equation: set text(font: "Fira Math")
@@ -11,14 +11,14 @@
   subtitle: "A Practical Guide",
   date: "Anno scolastico 2023-2024",
   author: "Goro Akechi",
-  mainColor: mainColor,
+  main-color: main-color,
   lang: "en",
   cover: image("./background.png"),
-  imageIndex: image("./orange1.jpg"),
-  listOfFigureTitle: "List of Figures",
-  listOfTableTitle: "List of Tables",
-  supplementChapter: "Chapter",
-  part_style: 0,
+  image-index: image("./orange1.jpg"),
+  list-of-figure-title: "List of Figures",
+  list-of-table-title: "List of Tables",
+  supplement-chapter: "Chapter",
+  part-style: 0,
   copyright: [
     Copyright © 2023 Flavio Barisi
 
