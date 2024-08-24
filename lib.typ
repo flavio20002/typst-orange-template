@@ -319,13 +319,17 @@
     numbering("(1.1)", counter(heading).get().first(), num)
   )
 
-  set figure(gap: 1.3em,
-  numbering: it => {
-    locate(loc => {
-      let chapter = counter(heading.where(level: 1)).at(loc).first()
-      box[#chapter.#it]
-    })
-  })
+  set figure(numbering: num =>
+    numbering("1.1", counter(heading).get().first(), num)
+  )
+
+  set figure(gap: 1.3em
+  // numbering: it => {
+  //   locate(loc => {
+  //     let chapter = counter(heading.where(level: 1)).at(loc).first()
+  //     box[#chapter.#it]
+  //   })}
+  )
 
   show figure: it => align(center)[
     #it
