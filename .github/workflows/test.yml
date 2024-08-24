@@ -14,9 +14,8 @@ jobs:
         uses: baptiste0928/cargo-install@v2
         with:
           crate: just
-      - uses: yusancky/setup-typst@v2
-        id: setup-typst
+      - uses: typst-community/setup-typst@v3
         with:
-          version: 'v0.11.1'
+          typst-version: 0.11.1
       - run: |
           just test
