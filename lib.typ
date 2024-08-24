@@ -314,16 +314,10 @@
   set par(leading: 0.5em)
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
-  show math.equation.where(block: true): e => {
-    counter(math.equation).step()
-    locate(loc => {
-      pad(left: 1cm, {
-        box(baseline: 50%, e)
-        h(1fr)
-        box(baseline: 50%, "(" + str(counter(heading).at(loc).at(0)) + "." + str(counter(math.equation).at(loc).first()) + ")")
-      })
-    })
-  }
+
+  set math.equation(numbering: num =>
+    numbering("(1.1)", counter(heading).get().first(), num)
+  )
 
   set figure(gap: 1.3em,
   numbering: it => {
