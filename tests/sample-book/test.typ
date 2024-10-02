@@ -303,7 +303,7 @@ tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.
   caption: [Figure caption.],
 ) <figure>
 
-Referencing @figure in-text using its label.
+Referencing @figure in-text using its label and referencing @figure1 in-text using its label.
 
 #figure(
   placement: top,
