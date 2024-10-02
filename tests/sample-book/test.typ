@@ -142,9 +142,9 @@ Lists are useful to present information in a concise and/or ordered way.
 == Ligatures 
 fi fj fl ffl ffi Ty
 
-== Referencing Chapters
+== Referencing Chapters<heading1>
 #index("Referencing")
-This statement references to another chapter @chap1
+This statement references to another chapter @chap1. This statement references to another heading @heading1. This statement references to another heading @heading2.
 
 #part("Part Two Title")
 
@@ -152,7 +152,7 @@ This statement references to another chapter @chap1
 
 == Theorems
 #index("Theorems")
-=== Several equations
+=== Several equations<heading2>
 #index("Theorems!Several equations")
 This is a theorem consisting of several equations.
 #theorem(name: "Name of the theorem")[
