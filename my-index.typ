@@ -26,7 +26,6 @@ figure(
         return ct
     }
     
-    pagebreak(to: "odd")
     set par(first-line-indent: 0em)
     locate(loc => {
         let main-color = main-color-state.at(loc)

@@ -18,7 +18,7 @@
 #let title2 = 1.5em
 #let title3 = 1.3em
 #let title4 = 1.2em
-#let title5 = 1.1em
+#let title5 = 11pt
 
 #let outline-part = 1.5em;
 #let outline-heading1 = 1.3em;
@@ -40,15 +40,6 @@
 #let part-location = state("part-location", none)
 #let part-counter = counter("part-counter")
 #let part-change = state("part-change", false)
-
-
-// pagebreak(to: "odd") is not working correctly
-#let pagebreak-until-odd() = {
-  pagebreak()
-  counter(page).display(i => if calc.even(i) {
-    pagebreak()
-  })
-}
 
 #let part(title) = {
   pagebreak(to: "odd")
@@ -91,7 +82,6 @@
 }
 
 #let chapter(title, image:none, l: none) = {
-  pagebreak(to: "odd")
   heading-image.update(x =>
     image
   )
@@ -100,8 +90,11 @@
   ] else [
     #heading(level: 1, title) 
   ]
-  part-change.update(x =>
-    false
+}
+
+#let update-heading-image(image:none) = {
+  heading-image.update(x =>
+    image
   )
 }
 
@@ -135,7 +128,6 @@
 }
 
 #let my-bibliography(file, image:none) = {
-  pagebreak-until-odd()
   counter(heading).update(0)
   heading-image.update(x =>
     image
@@ -345,6 +337,7 @@
       set text(size: title5)
       let page_number = counter(page).at(loc).first()
       let odd_page = calc.odd(page_number)
+      let part_change = part-change.at(loc)
       // Are we on an odd page?
       // if odd_page {
       //   return text(0.95em, smallcaps(title))
@@ -353,7 +346,7 @@
       // Are we on a page that starts a chapter? (We also check
       // the previous page because some headings contain pagebreaks.)
       let all = query(heading.where(level: 1), loc)
-      if all.any(it => it.location().page() == page_number) {
+      if all.any(it => it.location().page() == page_number) or part_change {
         return
       }
       let appendix = appendix-state.at(loc)      
@@ -420,6 +413,7 @@
   show heading: it => {
     set text(size: font-size)
     if it.level == 1 {
+      pagebreak(to: "odd")
       //set par(justify: false)
       counter(figure.where(kind: image)).update(0)
       counter(figure.where(kind: table)).update(0)
@@ -463,6 +457,9 @@
         v(1.5cm, weak: true)
       }
       })
+      part-change.update(x =>
+        false
+      )
     }
     else if it.level == 2 or it.level == 3 or it.level == 4 {
       let size
@@ -525,7 +522,6 @@
       #it
     ]
     show par: set block(spacing: 2em)
-    pagebreak()
     align(bottom, copyright)
   }
   
