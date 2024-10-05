@@ -1,4 +1,4 @@
-#import "../lib.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, mathcal
+#import "../lib.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, mathcal, update-heading-image
 
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
@@ -101,7 +101,9 @@ imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcor
 #heading(level:3, numbering: none, "Unnumbered Subsection", outlined: false)
 #heading(level:4, numbering: none, "Unnumbered Subsubsection", outlined: false)
 
-#chapter("In-text Element Examples", image: image("./orange2.jpg"))
+// Chapter can also be defined in this way
+#update-heading-image(image: image("./orange2.jpg"))
+= In-text Element Examples
 
 == Referencing Publications
 #index("Citation")
