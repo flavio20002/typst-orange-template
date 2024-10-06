@@ -36,7 +36,8 @@
     See the License for the specific language governing permissions and limitations under the License.
 
     _First printing, July 2023_
-  ]
+  ],
+  lowercase-references: false
 )
 
 #part("Part One Title") 

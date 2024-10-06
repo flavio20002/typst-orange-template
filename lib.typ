@@ -300,13 +300,16 @@
   })
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
 
+  set ref (supplement: (it)=>{lower(it.supplement)}) if lowercase-references
+
+  
   set math.equation(numbering: num =>
     numbering("(1.1)", counter(heading).get().first(), num)
   )
@@ -409,6 +412,7 @@
       it
     }
   }
+
 
   show heading: it => {
     set text(size: font-size)
