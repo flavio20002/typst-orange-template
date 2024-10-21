@@ -27,9 +27,9 @@ figure(
     }
     
     set par(first-line-indent: 0em)
-    locate(loc => {
-        let main-color = main-color-state.at(loc)
-            let elements = query(selector(figure.where(kind: index_string)).before(loc), loc)
+    context{
+        let main-color = main-color-state.at(here())
+            let elements = query(selector(figure.where(kind: index_string)).before(here()))
         let words = (:)
         for el in elements {
             let ct = ""
@@ -84,5 +84,5 @@ figure(
                     #v(0.65em, weak:true)
         ]
         ]))
-    })
+    }
 }

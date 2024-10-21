@@ -22,11 +22,12 @@
     set par(first-line-indent: 0em)
     let number = none
     if not numbering == none {
-      locate(loc => {
+      context{
+        let her = here()
         thmcounters.update(thmpair => {
           let counters = thmpair.at("counters")
           // Manually update heading counter
-          counters.at("heading") = counter(heading).at(loc)
+          counters.at("heading") = counter(heading).at(her)
           if not identifier in counters.keys() {
             counters.insert(identifier, (0, ))
           }
@@ -62,7 +63,7 @@
             "latest": latest
           )
         })
-      })
+      }
 
       number = thmcounters.display(x => {
         return global_numbering(numbering, ..x.at("latest"))
@@ -90,10 +91,10 @@
     }
   }
 
-  locate(loc => {
-    let elements = query(label, loc)
+  context{
+    let elements = query(label)
     let locationreps = elements.map(x => repr(x.location().position())).join(", ")
-    assert(elements.len() > 0, message: "label <" + str(label) + "> does not exist in the document: referenced at " + repr(loc.position()))
+    assert(elements.len() > 0, message: "label <" + str(label) + "> does not exist in the document: referenced at " + repr(here().position()))
     assert(elements.len() == 1, message: "label <" + str(label) + "> occurs multiple times in the document: found at " + locationreps)
     let target = elements.first().location()
     let number = thmcounters.at(target).at("latest")
@@ -101,7 +102,7 @@
       return link(target, fmt(number, body))
     }
     return fmt(number, body)
-  })
+  }
 }
 
 
@@ -133,18 +134,16 @@
     }
     title = titlefmt(title)
     body = bodyfmt(body)
-    pad(
-      ..padding,
       block(
         fill: fill,
         stroke: stroke,
+        spacing: 1.2em,
         inset: inset,
         width: 100%,
         radius: radius,
         breakable: breakable,
         [#title#name#separator#body]
       )
-    )
   }
   return thmenv(identifier, base, base_level, boxfmt)
 }
