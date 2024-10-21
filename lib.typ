@@ -297,7 +297,6 @@
   set par(leading: 0.5em)
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
-  set block(spacing: 1.2em)
 
   set ref (supplement: (it)=>{lower(it.supplement)}) if lowercase-references
 
@@ -519,6 +518,7 @@
     justify: true,
     spacing: 0.5em
   )
+  set block(spacing: 1.2em)
   show link: set text(fill: main-color)
 
   body
