@@ -16,9 +16,10 @@
   ]
 }
 
-#let my-outline(appendix-state, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none) = {
+#let my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none) = {
   show outline.entry: it => {
     let appendix-state = appendix-state.at(it.element.location())
+    let appendix-state-hide-parent = appendix-state-hide-parent.at(it.element.location())
     let numberingFormat = if appendix-state != none {"A.1"} else {"1.1"}
     let counterInt = counter(heading).at(it.element.location())
     let number = none
@@ -43,7 +44,7 @@
       else{
         v(0.5cm, weak: true)
       }
-      if (counterInt.first() == 1 and appendix-state != none ){
+      if (counterInt.first() == 1 and appendix-state != none and not appendix-state-hide-parent ){
         my-outline-row(insetSize: 2pt, textWeight: "bold", textSize: textSize2, textColor:main-color, number: none, title: appendix-state, heading_page: heading_page, location: it.element.location())
         v(0.5cm, weak: true)
       }

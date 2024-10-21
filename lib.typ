@@ -33,6 +33,7 @@
 #let language-state = state("language-state", none)
 #let main-color-state = state("main-color-state", none)
 #let appendix-state = state("appendix-state", none)
+#let appendix-state-hide-parent = state("appendix-state-hide-parent", none)
 #let heading-image = state("heading-image", none)
 #let supplement-part-state = state("supplement_part", none)
 #let part-style-state = state("part-style", 0)
@@ -102,10 +103,13 @@
   make-index-int(title:title, main-color-state: main-color-state)
 }
 
-#let appendices(title, doc) = {
+#let appendices(title, doc, hide-parent: false) = {
   counter(heading).update(0)
   appendix-state.update(x =>
     title
+  )
+  appendix-state-hide-parent.update(x =>
+    hide-parent
   )
   set heading ( numbering: (..nums) => {
       let vals = nums.pos()
@@ -505,7 +509,7 @@
     image-index
   )
 
-  my-outline(appendix-state, part-state, part-location,part-change,part-counter, main-color, textSize1: outline-part, textSize2: outline-heading1, textSize3: outline-heading2, textSize4: outline-heading3)
+  my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1: outline-part, textSize2: outline-heading1, textSize3: outline-heading2, textSize4: outline-heading3)
 
   my-outline-sec(list-of-figure-title, figure.where(kind: image), outline-heading3)
 

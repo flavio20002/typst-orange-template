@@ -338,7 +338,7 @@ Referencing @figure in-text using its label and referencing @figure1 in-text usi
 
 #make-index(title: "Index")
 
-#show: appendices.with("Appendices")
+#show: appendices.with("Appendices", hide-parent: false)
 
 #chapter("Appendix Chapter Title", image: image("./orange2.jpg"))
 
