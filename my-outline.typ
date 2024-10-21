@@ -92,7 +92,7 @@
     [
       #set text(size: textSize)
       #box(width: 0.75cm, align(right, [#it.body.at("children").at(2) #h(0.2cm)]))
-      #link(it.element.location(), it.body.at("children").at(4))
+      #link(it.element.location(), it.element.at("caption").body)
       #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
       #link(it.element.location(),heading_page)
     ]
