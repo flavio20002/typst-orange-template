@@ -23,6 +23,7 @@ This template exports the `book` function with the following named arguments:
   change the page format.
 - `copyright`: Details about the copyright or
   `none`.
+- `lowercase-references`: True to have references in lowercase (Eg. table 1.1)
 
 The function also accepts a single, positional argument for the body of the
 book.
@@ -63,7 +64,8 @@ use this template, you can add a show rule like this at the top of your file:
     See the License for the specific language governing permissions and limitations under the License.
 
     _First printing, July 2023_
-  ]
+  ],
+  lowercase-references: false
 )
 
 // Your content goes below.
