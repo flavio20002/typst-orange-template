@@ -1,24 +1,70 @@
-A Typst implementation of https://www.latextemplates.com/template/legrand-orange-book
-See the example pdf in the Release section of this project
+# orange-book
+A book template inspired by The Legrand Orange Book of Mathias Legrand and Vel https://www.latextemplates.com/template/legrand-orange-book.
 
-To compile the example:
+## Usage
+You can use this template in the Typst web app by clicking "Start from template"
+on the dashboard and searching for `orange-book`.
 
-    typst watch ./example/main.typ --root . --font-path fonts 
+Alternatively, you can use the CLI to kick this project off using the command
+```
+typst init @preview/orange-book
+```
 
+Typst will create a new directory with all the files needed to get you started.
 
-This template was realized with the help of:
+## Configuration
+This template exports the `book` function with the following named arguments:
 
-https://github.com/sahasatvik/typst-theorems
+- `title`: The book's title as content.
+- `subtitle`: The book's subtitle as content.
+- `author`: Content or an array of content to specify the author.
+- `paper-size`: Defaults to `a4`. Specify a [paper size
+  string](https://typst.app/docs/reference/layout/page/#parameters-paper) to
+  change the page format.
+- `copyright`: Details about the copyright or
+  `none`.
 
-https://github.com/RolfBremer/in-dexter
+The function also accepts a single, positional argument for the body of the
+book.
 
-Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+The template will initialize your package with a sample call to the `book`
+function in a show rule. If you, however, want to change an existing project to
+use this template, you can add a show rule like this at the top of your file:
 
-This work is licensed under a
-[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+```typ
+#import "@preview/orange-book:0.1.0": book
 
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+#show: book.with(
+  title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
+  subtitle: "A Practical Guide",
+  date: "Anno scolastico 2023-2024",
+  author: "Goro Akechi",
+  mainColor: rgb("#F36619"),
+  lang: "en",
+  cover: image("./background.svg"),
+  imageIndex: image("./orange1.jpg"),
+  listOfFigureTitle: "List of Figures",
+  listOfTableTitle: "List of Tables",
+  supplementChapter: "Chapter",
+  supplementPart: "Part",
+  part_style: 0,
+  copyright: [
+    Copyright © 2023 Flavio Barisi
 
-[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
-[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
-[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+    PUBLISHED BY PUBLISHER
+
+    #link("https://github.com/flavio20002/typst-orange-template", "TEMPLATE-WEBSITE")
+
+    Licensed under the Apache 2.0 License (the “License”).
+    You may not use this file except in compliance with the License. You may obtain a copy of
+    the License at https://www.apache.org/licenses/LICENSE-2.0. Unless required by
+    applicable law or agreed to in writing, software distributed under the License is distributed on an
+    “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and limitations under the License.
+
+    _First printing, July 2023_
+  ]
+)
+
+// Your content goes below.
+```
