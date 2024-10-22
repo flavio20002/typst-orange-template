@@ -1,10 +1,11 @@
 // Store theorem environment numbering
 
-#let thmcounters = state("thm",
+#let thmcounters = state(
+  "thm",
   (
     "counters": ("heading": ()),
-    "latest": ()
-  )
+    "latest": (),
+  ),
 )
 
 
@@ -17,19 +18,19 @@
     name: none,
     numbering: "1.1",
     base: base,
-    base_level: base_level
+    base_level: base_level,
   ) => {
     set par(first-line-indent: 0em)
     let number = none
     if not numbering == none {
-      context{
+      context {
         let her = here()
         thmcounters.update(thmpair => {
           let counters = thmpair.at("counters")
           // Manually update heading counter
           counters.at("heading") = counter(heading).at(her)
           if not identifier in counters.keys() {
-            counters.insert(identifier, (0, ))
+            counters.insert(identifier, (0,))
           }
 
           let tc = counters.at(identifier)
@@ -40,7 +41,7 @@
             if base_level != none {
               if bc.len() < base_level {
                 bc = bc + (0,) * (base_level - bc.len())
-              } else if bc.len() > base_level{
+              } else if bc.len() > base_level {
                 bc = bc.slice(0, base_level)
               }
             }
@@ -60,14 +61,14 @@
           let latest = counters.at(identifier)
           return (
             "counters": counters,
-            "latest": latest
+            "latest": latest,
           )
         })
       }
 
-      number = thmcounters.display(x => {
-        return global_numbering(numbering, ..x.at("latest"))
-      })
+      number = context {
+        global_numbering(numbering, ..thmcounters.get().at("latest"))
+      }
     }
 
     fmt(name, number, body)
@@ -79,7 +80,7 @@
   label,
   fmt: auto,
   makelink: true,
-  ..body
+  ..body,
 ) = {
   if fmt == auto {
     fmt = (nums, body) => {
@@ -91,11 +92,17 @@
     }
   }
 
-  context{
+  context {
     let elements = query(label)
     let locationreps = elements.map(x => repr(x.location().position())).join(", ")
-    assert(elements.len() > 0, message: "label <" + str(label) + "> does not exist in the document: referenced at " + repr(here().position()))
-    assert(elements.len() == 1, message: "label <" + str(label) + "> occurs multiple times in the document: found at " + locationreps)
+    assert(
+      elements.len() > 0,
+      message: "label <" + str(label) + "> does not exist in the document: referenced at " + repr(here().position()),
+    )
+    assert(
+      elements.len() == 1,
+      message: "label <" + str(label) + "> occurs multiple times in the document: found at " + locationreps,
+    )
     let target = elements.first().location()
     let number = thmcounters.at(target).at("latest")
     if makelink {
@@ -134,16 +141,16 @@
     }
     title = titlefmt(title)
     body = bodyfmt(body)
-      block(
-        fill: fill,
-        stroke: stroke,
-        spacing: 1.2em,
-        inset: inset,
-        width: 100%,
-        radius: radius,
-        breakable: breakable,
-        [#title#name#separator#body]
-      )
+    block(
+      fill: fill,
+      stroke: stroke,
+      spacing: 1.2em,
+      inset: inset,
+      width: 100%,
+      radius: radius,
+      breakable: breakable,
+      [#title#name#separator#body],
+    )
   }
   return thmenv(identifier, base, base_level, boxfmt)
 }
