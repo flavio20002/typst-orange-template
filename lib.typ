@@ -2,6 +2,10 @@
 #import("my-index.typ"): *
 #import("theorems.typ"): *
 
+#let scr(it) = text(
+  features: ("ss01",),
+  box($cal(it)$),
+)
 #let mathcal = (it) => {
   set text(size: 1.3em, font: "OPTIOriginal", fallback: false)
   it

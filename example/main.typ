@@ -1,11 +1,11 @@
-#import "../lib.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, mathcal, update-heading-image
+#import "../lib.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, scr, update-heading-image
 
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
-#set text(font: "Lato")
+//#set text(font: "Lato")
 //#show math.equation: set text(font: "Fira Math")
-#show math.equation: set text(font: "Lato Math")
-#show raw: set text(font: "Fira Code")
+//#show math.equation: set text(font: "Lato Math")
+//#show raw: set text(font: "Fira Code")
 
 #show: book.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
@@ -168,7 +168,7 @@ This is a theorem consisting of several equations.
 #index("Theorems!Single Line")
 This is a theorem consisting of just one line.
 #theorem()[
-  A set $mathcal(D)(G)$  in dense in $L^2(G)$, $|dot|_0$.
+  A set $scr(D)(G)$  in dense in $L^2(G)$, $|dot|_0$.
 ]
 == Definitions
 #index("Definitions")
@@ -188,7 +188,7 @@ A definition can be mathematical or it could define a concept.
   + Bounded support $G$;
   + Infinitely differentiable;
   #v(0.5em, weak: true)
-	a vector space is denoted by $mathcal(D)(G)$. 
+	a vector space is denoted by $scr(D)(G)$. 
 ]
 == Remarks
 #index("Remarks")
@@ -217,7 +217,7 @@ This is an example of a remark.
 #index("Propositions!Single Line")
 
 #proposition()[
-  	Let $f,g in L^2(G)$; if $forall phi in mathcal(D) (G)$, $(f,phi)_0=(g,phi)_0$ then $f = g$. 
+  	Let $f,g in L^2(G)$; if $forall phi in scr(D) (G)$, $(f,phi)_0=(g,phi)_0$ then $f = g$. 
 ]
 == Examples
 #index("Examples")
