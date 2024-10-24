@@ -321,7 +321,9 @@
 
   show figure: it => align(center)[
     #it
-    #v(2.6em, weak: true)
+    #if (it.placement == none){
+      v(2.6em, weak: true)
+    }
   ]
 
   show terms: set par(first-line-indent: 0em)
