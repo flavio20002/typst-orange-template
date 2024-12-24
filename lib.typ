@@ -351,9 +351,9 @@
       if odd_page {
         let before = query(selector(heading.where(level: 2)).before(here()))
         let counterInt = counter(heading).at(here())
-        if before != () and counterInt.len()> 2 {
+        if before != () and counterInt.len()> 1 {
           box(width: 100%, inset: (bottom: 5pt), stroke: (bottom: 0.5pt))[
-            #text(if appendix != none {numbering("A.1", ..counterInt.slice(1,3)) + " " + before.last().body} else {numbering("1.1", ..counterInt.slice(1,3)) + " " + before.last().body})
+            #text(if appendix != none {numbering("A.1", ..counterInt.slice(0,2)) + " " + before.last().body} else {numbering("1.1", ..counterInt.slice(0,2)) + " " + before.last().body})
             #h(1fr)
             #page_number
           ]
@@ -372,8 +372,8 @@
     }
   )
 
-  show cite: it  => {
-    show regex("\[(\d+)"): set text(main-color)
+  show cite: it => {
+    show regex("[\w\W]"): set text(main-color)
     it
   }
 
