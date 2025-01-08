@@ -331,7 +331,7 @@
   set page(
     paper: paper-size,
     margin: (x: 3cm, bottom: 2.5cm, top: 3cm),
-     header: context{
+    header: context{
       set text(size: title5)
       let page_number = counter(page).at(here()).first()
       let odd_page = calc.odd(page_number)
@@ -351,23 +351,27 @@
       if odd_page {
         let before = query(selector(heading.where(level: 2)).before(here()))
         let counterInt = counter(heading).at(here())
-        if before != () and counterInt.len()> 1 {
-          box(width: 100%, inset: (bottom: 5pt), stroke: (bottom: 0.5pt))[
-            #text(if appendix != none {numbering("A.1", ..counterInt.slice(0,2)) + " " + before.last().body} else {numbering("1.1", ..counterInt.slice(0,2)) + " " + before.last().body})
-            #h(1fr)
-            #page_number
-          ]
-        }
-      } else{
+        box(width: 100%, inset: (bottom: 5pt), stroke: (bottom: 0.5pt))[
+          #{
+            if before != () and counterInt.len()> 1 {
+              text(if appendix != none {numbering("A.1", ..counterInt.slice(0,2)) + " " + before.last().body} else {numbering("1.1", ..counterInt.slice(0,2)) + " " + before.last().body})
+            }
+          }
+          #h(1fr)
+          #page_number
+        ]
+      } else {
         let before = query(selector(heading.where(level: 1)).before(here()))
         let counterInt = counter(heading).at(here()).first()
-        if before != () and counterInt > 0 {
-          box(width: 100%, inset: (bottom: 5pt), stroke: (bottom: 0.5pt))[
-            #page_number
-            #h(1fr)
-            #text(weight: "bold", if appendix != none {numbering("A.1", counterInt) + ". " + before.last().body} else{before.last().supplement + " " + str(counterInt) + ". " + before.last().body})
-          ]
-        }
+        box(width: 100%, inset: (bottom: 5pt), stroke: (bottom: 0.5pt))[
+          #page_number
+          #h(1fr)
+          #{
+            if before != () and counterInt > 0 {
+              text(weight: "bold", if appendix != none {numbering("A.1", counterInt) + ". " + before.last().body} else{before.last().supplement + " " + str(counterInt) + ". " + before.last().body})
+            }
+          }
+        ]
       }
     }
   )
