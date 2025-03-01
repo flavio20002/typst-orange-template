@@ -6,10 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: awalsh128/cache-apt-pkgs-action@latest
+      - uses: mfinelli/setup-imagemagick@v5
         with:
-          packages: imagemagick cargo
-          version: 1.0
+          cache: true
       - name: Install just from crates.io
         uses: baptiste0928/cargo-install@v2
         with:

@@ -24,15 +24,6 @@ TYPST_ARCHIVE="typst-x86_64-unknown-linux-musl.tar.xz"
 
 TYPST_ROOT="$(realpath "$DIR/..")"
 
-if hash magick 2>/dev/null; then
-  MAGICK_COMPARE="magick compare"
-elif hash compare 2>/dev/null; then
-  MAGICK_COMPARE="compare"
-else
-  >&2 echo "Could not find 'magick' nor 'compare' binary. Make sure you have image magick installed and in your PATH."
-  exit 1
-fi
-
 
 function install_typst()
 {
