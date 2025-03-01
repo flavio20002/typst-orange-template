@@ -27,7 +27,7 @@
       number = numbering(numberingFormat, ..counterInt)
     }
     let title = it.element.body
-    let heading_page = it.page
+    let heading_page = it.page()
 
     if it.level == 1 {
       let part-state = part-state.at(it.element.location())
@@ -56,7 +56,7 @@
        my-outline-row(textWeight: "regular", textSize: textSize4, textColor:black, number: number, title: title, heading_page: heading_page, location: it.element.location())
     }
   }
-  outline(depth: 3, indent: false)
+  outline(depth: 3, indent: 0em)
 }
 
 #let my-outline-small(partTitle, appendix-state, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none) = {
@@ -69,7 +69,7 @@
       number = numbering(numberingFormat, ..counterInt)
     }
     let title = it.element.body
-    let heading_page = it.page
+    let heading_page = it.page()
     let part-state = part-state.at(it.element.location())
     if (part-state == partTitle and counterInt.first() >0 and appendix-state==none){
       if it.level == 1 {
@@ -84,18 +84,20 @@
       v(-0.65em, weak: true)
     }
   }
-  box(width: 9.5cm, outline(depth: 2, indent: false, title: none))
+  box(width: 9.5cm, outline(depth: 2, indent: 0em, title: none))
 }
 
 #let my-outline-sec(list-of-figure-title, target, textSize) = {
   show outline.entry.where(level: 1): it => {
-    let heading_page = it.page
+    let heading_page = it.page()
     [
       #set text(size: textSize)
-      #box(width: 0.75cm, align(right, [#it.body.at("children").at(2) #h(0.2cm)]))
-      #link(it.element.location(), it.element.at("caption").body)
-      #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
-      #link(it.element.location(),heading_page)
+      #box(width: 100%)[
+        #box(width: 0.75cm, align(right, [#it.prefix().at("children").at(2) #h(0.2cm)]))
+        #link(it.element.location(), it.element.at("caption").body)
+        #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
+        #link(it.element.location(),heading_page)
+      ]
     ]
   }
   outline(

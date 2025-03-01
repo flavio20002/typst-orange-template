@@ -115,7 +115,7 @@
   appendix-state-hide-parent.update(x =>
     hide-parent
   )
-  set heading ( numbering: (..nums) => {
+  set heading( numbering: (..nums) => {
       let vals = nums.pos()
       if vals.len() == 1 {
         return str(numbering("A.1", ..vals)) + "."
@@ -306,7 +306,7 @@
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
 
-  set ref (supplement: (it)=>{lower(it.supplement)}) if lowercase-references
+  set ref(supplement: (it)=>{lower(it.supplement)}) if lowercase-references
 
   
   set math.equation(numbering: num =>
