@@ -10,6 +10,7 @@
   box(width: 1.1cm, inset: (y: insetSize), align(left, number))
   h(0.1cm)
   box(inset: (y: insetSize), width: 100% - 1.2cm, )[
+    #set align(left) 
     #link(location, title)
     #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
     #link(location, heading_page)
