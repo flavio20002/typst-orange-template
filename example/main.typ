@@ -1,4 +1,4 @@
-#import "../lib.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, scr, update-heading-image
+#import "../lib.typ": *
 
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
@@ -39,6 +39,21 @@
   ],
   lowercase-references: false
 )
+
+// Custom thmbox
+#let solution(name: none, body) = {
+  context{
+    thmbox("solution","Solution",
+    stroke: (left: 4pt + green),
+    radius: 0em,
+    inset: 0.65em,
+    namefmt: x => [*--- #x.*],
+    separator: h(0.2em),
+    titlefmt: x => text(fill: green, weight: "bold", x),
+    fill: green.lighten(90%), 
+    base_level: 1)(name:name, body)
+  }
+}
 
 #part("Part One Title") 
 
