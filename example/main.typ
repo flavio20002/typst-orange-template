@@ -10,7 +10,7 @@
 #show: book.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
   subtitle: "A Practical Guide",
-  date: "Anno scolastico 2023-2024",
+  date: datetime.today,
   author: "Goro Akechi",
   main-color: rgb("#F36619"),
   lang: "en",
