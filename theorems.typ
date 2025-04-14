@@ -1,13 +1,144 @@
 // Store theorem environment numbering
 
+#let translations = (
+  "theorem": (
+    "en": "Theorem",
+    "ca": "Teorema",
+    "de": "Satz",
+    "fr": "Théorème",
+    "es": "Teorema",
+  ),
+  "proposition": (
+    "en": "Proposition",
+    "ca": "Proposició",
+    "de": "Proposition",
+    "fr": "Proposition",
+    "es": "Proposición",
+  ),
+  "lemma": (
+    "en": "Lemma",
+    "ca": "Lema",
+    "de": "Lemma",
+    "fr": "Lemme",
+    "es": "Lema",
+  ),
+  "corollary": (
+    "en": "Corollary",
+    "ca": "Coroŀlari",
+    "de": "Korollar",
+    "fr": "Corollaire",
+    "es": "Corolario",
+  ),
+  "definition": (
+    "en": "Definition",
+    "ca": "Definició",
+    "de": "Definition",
+    "fr": "Définition",
+    "es": "Definición",
+  ),
+  "example": (
+    "en": "Example",
+    "ca": "Exemple",
+    "de": "Beispiel",
+    "fr": "Exemple",
+    "es": "Ejemplo",
+  ),
+  "remark": (
+    "en": "Remark",
+    "ca": "Observació",
+    "de": "Bemerkung",
+    "fr": "Remarque",
+    "es": "Observación",
+  ),
+  "note": (
+    "en": "Note", 
+    "ca": "Nota",
+    "de": "Notiz",
+    "fr": "Note",
+    "es": "Nota",
+  ),
+  "exercise": (
+    "en": "Exercise",
+    "ca": "Exercici",
+    "de": "Übung",
+    "fr": "Exercice",
+    "es": "Ejercicio",
+  ),
+  "algorithm": (
+    "en": "Algorithm",
+    "ca": "Algorisme",
+    "de": "Algorithmus",
+    "fr": "Algorithme",
+    "es": "Algoritmo",
+  ),
+  "claim": (
+    "en": "Claim", 
+    "ca": "Afirmació",
+    "de": "Behauptung",
+    "fr": "Assertion",
+    "es": "Afirmación",
+  ),
+  "axiom": (
+    "en": "Axiom", 
+    "ca": "Axioma",
+    "de": "Axiom",
+    "fr": "Axiome",
+    "es": "Axioma",
+  ),
+  "proof": (
+    "en": "Proof", 
+    "ca": "Demostració",
+    "de": "Beweis", 
+    "fr": "Démonstration", 
+    "es": "Demostración",
+  ),
+  "proof-of": (
+    "en": "Proof of", 
+    "ca": "Demostració del",
+    "de": "Beweis von", 
+    "fr": "Démonstration du", 
+    "es": "Demostración del",
+  ),
+  "notation": (
+    "en": "Notation",
+    "ca": "Notació",
+    "de": "Notation",
+    "fr": "Notation",
+    "es": "Notación",
+  ),
+  "problem": (
+    "en": "Problem",
+    "ca": "Problema",
+    "de": "Problem",
+    "fr": "Problème",
+    "es": "Problema",
+  ),
+  "vocabulary": (
+    "en": "Vocabulary",
+    "ca": "Vocabulari",
+    "de": "Wortschatz",
+    "fr": "Vocabulaire",
+    "es": "Vocabulario",
+  ),
+)
+
+#let translation(key) = {
+  let lang-dict = translations.at(key, default: key)
+  // If default value was returned
+  return if type(lang-dict) == str {
+    lang-dict
+  } else {
+    context lang-dict.at(text.lang, default: lang-dict.at("en", default: key))
+  }
+}
+
 #let thmcounters = state(
   "thm",
   (
     "counters": ("heading": ()),
     "latest": (),
   ),
-)
-
+) 
 
 #let thmenv(identifier, base, base_level, fmt) = {
 
@@ -115,7 +246,6 @@
 
 #let thmbox(
   identifier,
-  head,
   fill: none,
   stroke: none,
   inset: 1.2em,
@@ -135,7 +265,7 @@
     } else {
       name = []
     }
-    let title = head
+    let title = translation(identifier)
     if not number == none {
       title += " " + number
     }

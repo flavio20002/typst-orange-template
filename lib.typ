@@ -147,7 +147,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("theorem", if language=="en" {"Theorem"} else {"Teorema"},
+    thmbox("theorem",
     stroke: 0.5pt + main-color,
     radius: 0em,
     inset: 0.65em,
@@ -163,7 +163,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("definition", if language=="en" {"Definition"} else {"Definizione"},
+    thmbox("definition",
     stroke: (left: 4pt + main-color),
     radius: 0em,
     inset: (x: 0.65em),
@@ -178,7 +178,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("corollary", if language=="en" {"Corollary"} else {"Corollario"},
+    thmbox("corollary",
     stroke: (left: 4pt + gray),
     radius: 0em,
     inset: 0.65em,
@@ -195,7 +195,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("proposition", if language=="en" {"Proposition"} else {"Proposizione"},
+    thmbox("proposition",
     radius: 0em,
     inset: 0em,
     namefmt: x => [*--- #x.*],
@@ -210,7 +210,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("notation", if language=="en" {"Notation"} else {"Nota"},
+    thmbox("notation",
     stroke: none,
     radius: 0em,
     inset: 0em,
@@ -225,7 +225,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("exercise", if language=="en" {"Exercise"} else {"Esercizio"},
+    thmbox("exercise",
     stroke: (left: 4pt + main-color),
     radius: 0em,
     inset: 0.65em,
@@ -241,7 +241,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("example", if language=="en" {"Example"} else {"Esempio"},
+    thmbox("example",
     stroke: none,
     radius: 0em,
     inset: 0em,
@@ -256,7 +256,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("problem", if language=="en" {"Problem"} else {"Problema"},
+    thmbox("problem",
     stroke: none,
     radius: 0em,
     inset: 0em,
@@ -271,7 +271,7 @@
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
-    thmbox("vocabulary", if language=="en" {"Vocabulary"} else {"Vocabolario"},
+    thmbox("vocabulary",
     stroke: none,
     radius: 0em,
     inset: 0em,
