@@ -33,22 +33,22 @@ function in a show rule. If you, however, want to change an existing project to
 use this template, you can add a show rule like this at the top of your file:
 
 ```typ
-#import "@preview/orange-book:0.6.0": *
+#import "@preview/orange-book:0.6.1": book
 
 #show: book.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
   subtitle: "A Practical Guide",
   date: "Anno scolastico 2023-2024",
   author: "Goro Akechi",
-  mainColor: rgb("#F36619"),
+  main-color: rgb("#F36619"),
   lang: "en",
   cover: image("./background.svg"),
-  imageIndex: image("./orange1.jpg"),
-  listOfFigureTitle: "List of Figures",
-  listOfTableTitle: "List of Tables",
-  supplementChapter: "Chapter",
-  supplementPart: "Part",
-  part_style: 0,
+  image-index: image("./orange1.jpg"),
+  list-of-figure-title: "List of Figures",
+  list-of-table-title: "List of Tables",
+  supplement-chapter: "Chapter",
+  supplement-part: "Part",
+  part-style: 0,
   copyright: [
     Copyright © 2023 Flavio Barisi
 
