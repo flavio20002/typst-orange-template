@@ -299,7 +299,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -459,11 +459,16 @@
       }
       set text(size: size)
       let number = if it.numbering != none {
-        set text(fill: main-color) if it.level < 4
         let num = counter(heading).display(it.numbering)
         let width = measure(num).width
         let gap = 7mm
-        place(dx: -width - gap, num)
+        if (padded-heading-number){
+          set text(fill: main-color) if it.level < 4
+          place(dx: -width - gap, num)
+        }
+        else{
+          [#num \- ]
+        }
       }
       block(number + it.body)
       v(space, weak: true)
