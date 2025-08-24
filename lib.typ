@@ -301,7 +301,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -332,7 +332,7 @@
 
   set page(
     paper: paper-size,
-    margin: (x: 3cm, bottom: 2.5cm, top: 3cm),
+    margin: margin,
      header: context{
       set text(size: title5)
       let page_number = counter(page).at(here()).first()
@@ -421,6 +421,8 @@
           v(8.4cm)
       }
       else{
+        layout(size => {
+        let full_width = size.width
         move(dx: 3cm, dy: -0.5cm, align(right + top, block(
             width: 100% + 3cm,
             stroke: (
@@ -433,9 +435,11 @@
                 right: 0pt,
                 left: 10pt,
             ),
-            align(left, text(size: title1, it))
-          )))
-        v(1.5cm, weak: true)
+            align(left, block(
+            width: full_width, text(size: title1, it, hyphenate: false))
+          ))))
+      })
+      v(1.5cm, weak: true)
       }
       }
       part-change.update(x =>
