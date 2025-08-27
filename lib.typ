@@ -301,7 +301,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2, heading-style-compact: false) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2, heading-style-compact: false, first-line-indent: true) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -551,7 +551,14 @@
     first-line-indent: 1em,
     justify: true,
     spacing: 0.5em
-  )
+  ) if first-line-indent
+
+
+  set par(
+    justify: true,
+    spacing: 0.5em
+  ) if not first-line-indent
+
   set block(spacing: 1.2em)
   show link: set text(fill: main-color)
 
