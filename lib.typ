@@ -223,7 +223,7 @@
   }
 }
 
-#let exercise(name: none, body) = {
+#let exercise(name: none, body, breakable: true,) = {
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
@@ -231,7 +231,7 @@
     stroke: (left: 4pt + main-color),
     radius: 0em,
     inset: 0.65em,
-    breakable: true,
+    breakable: breakable,
     namefmt: x => [*--- #x.*],
     separator: h(0.2em),
     titlefmt: x => text(fill: main-color, weight: "bold", x),
