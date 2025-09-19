@@ -223,7 +223,7 @@
   }
 }
 
-#let exercise(name: none, body, breakable: true,) = {
+#let exercise(name: none, body, breakable: false,) = {
   context{
     let language = language-state.at(here())
     let main-color = main-color-state.at(here())
