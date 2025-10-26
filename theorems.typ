@@ -3,6 +3,7 @@
 #let translations = (
   "theorem": (
     "en": "Theorem",
+    "ru": "Теорема",
     "ca": "Teorema",
     "de": "Satz",
     "fr": "Théorème",
@@ -10,6 +11,7 @@
   ),
   "proposition": (
     "en": "Proposition",
+    "ru": "Пропозиция",
     "ca": "Proposició",
     "de": "Proposition",
     "fr": "Proposition",
@@ -17,6 +19,7 @@
   ),
   "lemma": (
     "en": "Lemma",
+    "ru": "Лемма",
     "ca": "Lema",
     "de": "Lemma",
     "fr": "Lemme",
@@ -24,6 +27,7 @@
   ),
   "corollary": (
     "en": "Corollary",
+    "ru": "Следствие",
     "ca": "Coroŀlari",
     "de": "Korollar",
     "fr": "Corollaire",
@@ -31,6 +35,7 @@
   ),
   "definition": (
     "en": "Definition",
+    "ru": "Определение",
     "ca": "Definició",
     "de": "Definition",
     "fr": "Définition",
@@ -38,6 +43,7 @@
   ),
   "example": (
     "en": "Example",
+    "ru": "Пример",
     "ca": "Exemple",
     "de": "Beispiel",
     "fr": "Exemple",
@@ -45,13 +51,15 @@
   ),
   "remark": (
     "en": "Remark",
+    "ru": "Примечание",
     "ca": "Observació",
     "de": "Bemerkung",
     "fr": "Remarque",
     "es": "Observación",
   ),
   "note": (
-    "en": "Note", 
+    "en": "Note",
+    "ru": "Замечание",
     "ca": "Nota",
     "de": "Notiz",
     "fr": "Note",
@@ -59,6 +67,7 @@
   ),
   "exercise": (
     "en": "Exercise",
+    "ru": "Упражнение",
     "ca": "Exercici",
     "de": "Übung",
     "fr": "Exercice",
@@ -66,6 +75,7 @@
   ),
   "algorithm": (
     "en": "Algorithm",
+    "ru": "Алгоритм",
     "ca": "Algorisme",
     "de": "Algorithmus",
     "fr": "Algorithme",
@@ -73,6 +83,7 @@
   ),
   "claim": (
     "en": "Claim", 
+    "ru": "Утверждение",
     "ca": "Afirmació",
     "de": "Behauptung",
     "fr": "Assertion",
@@ -80,6 +91,7 @@
   ),
   "axiom": (
     "en": "Axiom", 
+    "ru": "Аксиома",
     "ca": "Axioma",
     "de": "Axiom",
     "fr": "Axiome",
@@ -87,6 +99,7 @@
   ),
   "proof": (
     "en": "Proof", 
+    "ru": "Доказательство",
     "ca": "Demostració",
     "de": "Beweis", 
     "fr": "Démonstration", 
@@ -94,6 +107,7 @@
   ),
   "proof-of": (
     "en": "Proof of", 
+    "ru": "Доказательство",
     "ca": "Demostració del",
     "de": "Beweis von", 
     "fr": "Démonstration du", 
@@ -101,6 +115,7 @@
   ),
   "notation": (
     "en": "Notation",
+    "ru": "Обозначение",
     "ca": "Notació",
     "de": "Notation",
     "fr": "Notation",
@@ -108,6 +123,7 @@
   ),
   "problem": (
     "en": "Problem",
+    "ru": "Проблема",
     "ca": "Problema",
     "de": "Problem",
     "fr": "Problème",
@@ -115,6 +131,7 @@
   ),
   "vocabulary": (
     "en": "Vocabulary",
+    "ru": "Словарь",
     "ca": "Vocabulari",
     "de": "Wortschatz",
     "fr": "Vocabulaire",
