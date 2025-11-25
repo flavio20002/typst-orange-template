@@ -42,6 +42,7 @@
     "de": "Beispiel",
     "fr": "Exemple",
     "es": "Ejemplo",
+    "it": "Esempio",
   ),
   "remark": (
     "en": "Remark",
@@ -49,6 +50,7 @@
     "de": "Bemerkung",
     "fr": "Remarque",
     "es": "Observación",
+    "it": "Osservazione",
   ),
   "note": (
     "en": "Note", 
@@ -56,6 +58,7 @@
     "de": "Notiz",
     "fr": "Note",
     "es": "Nota",
+    "it": "Nota",
   ),
   "exercise": (
     "en": "Exercise",
@@ -63,6 +66,7 @@
     "de": "Übung",
     "fr": "Exercice",
     "es": "Ejercicio",
+    "it": "Esercizio",
   ),
   "algorithm": (
     "en": "Algorithm",
