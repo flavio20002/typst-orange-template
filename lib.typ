@@ -117,6 +117,9 @@
   appendix-state-hide-parent.update(x =>
     hide-parent
   )
+  set figure(numbering: num =>
+    numbering("A.1", counter(heading).get().first(), num)
+  )
   set heading( numbering: (..nums) => {
       let vals = nums.pos()
       if vals.len() == 1 {

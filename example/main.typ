@@ -360,8 +360,20 @@ Referencing @figure in-text using its label and referencing @figure1 in-text usi
 == Appendix Section Title
 
 #lorem(50)
+
+#figure(
+  image("creodocs_logo.svg", width: 50%),
+  caption: [Figure caption.],
+) <figure_appendix>
+
+
 #chapter("Appendix Chapter Title", image: image("./orange2.jpg"))
 
 == Appendix Section Title
 
 #lorem(50)
+
+#figure(
+  image("creodocs_logo.svg", width: 50%),
+  caption: [Figure caption.],
+) <figure_appendix2>
