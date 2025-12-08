@@ -521,9 +521,7 @@
         place(top + center, pad(top:1cm, logo))
     }
     #align(center + horizon, block(width: 100%, fill: main-color.lighten(70%), height: 7.5cm, pad(x:2cm, y:1cm)[
-      #par(leading: 1em)[
-        #text(size: title-main-1, weight: "black", title)
-      ]
+      #text(size: title-main-1, weight: "black", title)
       #v(1cm, weak: true)
       #text(size: title-main-2, subtitle)
       #v(1cm, weak: true)
