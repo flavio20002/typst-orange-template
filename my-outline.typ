@@ -23,8 +23,9 @@
     let appendix-state-hide-parent = appendix-state-hide-parent.at(it.element.location())
     let numberingFormat = if appendix-state != none {"A.1"} else {"1.1"}
     let counterInt = counter(heading).at(it.element.location())
+    let numberingSetting = it.element.numbering
     let number = none
-    if counterInt.first() >0 {
+    if numberingSetting != none and counterInt.first() >0 {
       number = numbering(numberingFormat, ..counterInt)
     }
     let title = it.element.body
