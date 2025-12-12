@@ -17,7 +17,7 @@
   ]
 }
 
-#let my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none) = {
+#let my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none, depth: none) = {
   show outline.entry: it => {
     let appendix-state = appendix-state.at(it.element.location())
     let appendix-state-hide-parent = appendix-state-hide-parent.at(it.element.location())
@@ -57,7 +57,7 @@
        my-outline-row(textWeight: "regular", textSize: textSize4, textColor:black, number: number, title: title, heading_page: heading_page, location: it.element.location())
     }
   }
-  outline(depth: 3, indent: 0em)
+  outline(depth: depth, indent: 0em)
 }
 
 #let my-outline-small(partTitle, appendix-state, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none, depth: 2) = {
