@@ -565,6 +565,16 @@
     spacing: 0.5em
   ) if not first-line-indent
 
+  show list: it => {
+    set par(spacing: 1em)
+    it
+  }
+
+  show enum: it => {
+    set par(spacing: 1em)
+    it
+  }
+
   show figure: set block(spacing: 1.2em)
   show math.equation: set block(spacing: 1.2em)
 
