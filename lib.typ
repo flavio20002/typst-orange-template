@@ -293,16 +293,19 @@
    context{
     let main-color = main-color-state.at(here())
     set par(first-line-indent: 0em)
-    grid(
-    columns: (1.2cm, 1fr),
-    align: (center, left),
-    rows: (auto),
-    circle(radius: 0.3cm, fill: main-color.lighten(70%), stroke: main-color.lighten(30%))[
-      #set align(center + horizon)
-      #set text(fill: main-color, weight: "bold")
-      R
-    ],
-    body)
+    block(
+      spacing: 1.2em,
+      [#grid(
+        columns: (1.2cm, 1fr),
+        align: (center, left),
+        rows: (auto),
+        circle(radius: 0.3cm, fill: main-color.lighten(70%), stroke: main-color.lighten(30%))[
+          #set align(center + horizon)
+          #set text(fill: main-color, weight: "bold")
+          R
+        ],
+        body)]
+    )
   }
 }
 
@@ -562,7 +565,10 @@
     spacing: 0.5em
   ) if not first-line-indent
 
-  set block(spacing: 1.2em)
+  show figure: set block(spacing: 1.2em)
+  show math.equation: set block(spacing: 1.2em)
+
+  //set block(spacing: 1.2em)
   show link: set text(fill: main-color)
 
   body
