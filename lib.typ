@@ -37,6 +37,7 @@
 #let language-state = state("language-state", none)
 #let main-color-state = state("main-color-state", none)
 #let outline-small-depth-state = state("outline-small-depth-state", none)
+#let outline-small-width-state = state("outline-small-width-state", none)
 #let appendix-state = state("appendix-state", none)
 #let appendix-state-hide-parent = state("appendix-state-hide-parent", none)
 #let heading-image = state("heading-image", none)
@@ -69,6 +70,7 @@
       let part-style = part-style-state.at(here())
       let supplement_part = supplement-part-state.at(here())
       let outline-small-depth = outline-small-depth-state.at(here())
+      let outline-small-width = outline-small-width-state.at(here())
       if part-style == 0 [
         #set par(justify: false)
         #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: main-color.lighten(70%)))
@@ -83,7 +85,7 @@
           #move(dx: -4pt, block(text(fill: main-color, size: 6em, weight: "bold", part-state.get())))
         ]
       ]
-      align(bottom+right, my-outline-small(title, appendix-state, part-state, part-location,part-change,part-counter, main-color, textSize1: outline-part, textSize2: outline-heading1, textSize3: outline-heading2, textSize4: outline-heading3, depth: outline-small-depth))
+      align(bottom+right, my-outline-small(title, appendix-state, part-state, part-location,part-change,part-counter, main-color, textSize1: outline-part, textSize2: outline-heading1, textSize3: outline-heading2, textSize4: outline-heading3, depth: outline-small-depth, width: outline-small-width))
     } 
   ]
 }
@@ -309,7 +311,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -514,6 +516,7 @@
     #part-style-state.update(x => part-style)
     #supplement-part-state.update(x => supplement-part)
     #outline-small-depth-state.update(x => outline-small-depth)
+    #outline-small-width-state.update(x => outline-small-width)
     //#place(top, image("images/background2.jpg", width: 100%, height: 50%))
     #if cover != none {
       set image(width: 100%, height: 100%)

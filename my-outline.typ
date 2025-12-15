@@ -61,7 +61,7 @@
   outline(depth: depth, indent: 0em)
 }
 
-#let my-outline-small(partTitle, appendix-state, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none, depth: 2) = {
+#let my-outline-small(partTitle, appendix-state, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none, depth: 2, width: 9.5) = {
   show outline.entry: it => {
     let appendix-state = appendix-state.at(it.element.location())
     let numberingFormat = if appendix-state != none {"A.1"} else {"1.1"}
@@ -86,7 +86,7 @@
       v(-0.65em, weak: true)
     }
   }
-  box(width: 9.5cm, outline(depth: depth, indent: 0em, title: none))
+  box(width: width, outline(depth: depth, indent: 0em, title: none))
 }
 
 #let my-outline-sec(list-of-figure-title, target, textSize) = {
