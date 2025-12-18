@@ -311,7 +311,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-font-size: auto, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -554,7 +554,7 @@
     image-index
   )
 
-  my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1: outline-part, textSize2: outline-heading1, textSize3: outline-heading2, textSize4: outline-heading3, depth: outline-depth)
+  my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1: outline-part, textSize2: outline-heading1, textSize3: outline-heading2, textSize4: outline-heading3, depth: outline-depth, outline-font-size: outline-font-size)
 
   my-outline-sec(list-of-figure-title, figure.where(kind: image), outline-heading3)
 

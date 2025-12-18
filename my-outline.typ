@@ -17,7 +17,7 @@
   ]
 }
 
-#let my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none, depth: none) = {
+#let my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1:none, textSize2:none, textSize3:none, textSize4:none, depth: none, outline-font-size: auto) = {
   show outline.entry: it => {
     let appendix-state = appendix-state.at(it.element.location())
     let appendix-state-hide-parent = appendix-state-hide-parent.at(it.element.location())
@@ -50,7 +50,14 @@
         my-outline-row(insetSize: 2pt, textWeight: "bold", textSize: textSize2, textColor:main-color, number: none, title: appendix-state, heading_page: heading_page, location: it.element.location())
         v(0.5cm, weak: true)
       }
-      my-outline-row(insetSize: 2pt, textWeight: "bold", textSize: textSize2, textColor:main-color, number: number, title: title, heading_page: heading_page, location: it.element.location())
+      let text-size
+      if outline-font-size == auto {
+        text-size = textSize2
+      }
+      else{
+        text-size = outline-font-size
+      }
+      my-outline-row(insetSize: 2pt, textWeight: "bold", textSize: text-size, textColor:main-color, number: number, title: title, heading_page: heading_page, location: it.element.location())
     }
     else if it.level ==2 {
       my-outline-row(insetSize: 2pt, textWeight: "bold", textSize: textSize3, textColor:black, number: number, title: title, heading_page: heading_page, location: it.element.location())
