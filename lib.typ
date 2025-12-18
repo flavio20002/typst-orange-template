@@ -311,7 +311,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -526,7 +526,13 @@
         set image(width: 3cm)
         place(top + center, pad(top:1cm, logo))
     }
-    #align(center + horizon, block(width: 100%, fill: main-color.lighten(70%), height: 7.5cm, pad(x:2cm, y:1cm)[
+    #let cover-fill-color
+    #if cover-background == auto {
+      cover-fill-color = main-color.lighten(70%)
+    } else {
+      cover-fill-color = cover-background
+    }
+    #align(center + horizon, block(width: 100%, fill: cover-fill-color, height: 7.5cm, pad(x:2cm, y:1cm)[
       #text(size: title-main-1, weight: "black", title)
       #v(1cm, weak: true)
       #text(size: title-main-2, subtitle)
