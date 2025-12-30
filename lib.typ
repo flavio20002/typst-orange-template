@@ -36,6 +36,7 @@
 
 #let language-state = state("language-state", none)
 #let main-color-state = state("main-color-state", none)
+#let part-font-size-state = state("part-font-size-state", none)
 #let outline-small-depth-state = state("outline-small-depth-state", none)
 #let outline-small-width-state = state("outline-small-width-state", none)
 #let appendix-state = state("appendix-state", none)
@@ -67,6 +68,7 @@
 
     #context{
       let main-color = main-color-state.at(here())
+      let part-font-size = part-font-size-state.at(here())
       let part-style = part-style-state.at(here())
       let supplement_part = supplement-part-state.at(here())
       let outline-small-depth = outline-small-depth-state.at(here())
@@ -75,7 +77,7 @@
         #set par(justify: false)
         #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: main-color.lighten(70%)))
         #place(top+right, text(fill: black, size: large-text, weight: "bold", box(width: 60%, part-state.get())))
-        #place(top+left, text(fill: main-color, size: huge-text, weight: "bold", part-counter.display("I")))
+        #place(top+left, text(fill: main-color, size: part-font-size, weight: "bold", part-counter.display("I")))
       ] else if part-style == 1 [
         #set par(justify: false)
         #place(block(width:100%, height:100%, outset: (x: 3cm, bottom: 2.5cm, top: 3cm), fill: main-color.lighten(70%)))
@@ -311,7 +313,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, lowercase-references: false, padded-heading-number: true, outline-font-size: auto, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, part-font-size: auto, lowercase-references: false, padded-heading-number: true, outline-font-size: auto, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -342,6 +344,10 @@
 
   set page( width: width, height: height)   if (width != none and height != none)
   set page( paper: paper-size) if (width == none or height == none)
+
+  if (part-font-size == auto){
+    part-font-size = huge-text
+  }
 
   set page(
     margin: margin,
@@ -513,6 +519,7 @@
     #set text(fill: black)
     #language-state.update(x => lang)
     #main-color-state.update(x => main-color)
+    #part-font-size-state.update(x => part-font-size)
     #part-style-state.update(x => part-style)
     #supplement-part-state.update(x => supplement-part)
     #outline-small-depth-state.update(x => outline-small-depth)
