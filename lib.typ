@@ -381,11 +381,23 @@
       } else{
         let before = query(selector(heading.where(level: 1)).before(here()))
         let counterInt = counter(heading).at(here()).first()
+
         if before != () and counterInt > 0 {
           box(width: 100%, inset: (bottom: 5pt), stroke: (bottom: 0.5pt))[
-            #page_number
-            #h(1fr)
-            #text(weight: "bold", if appendix != none {numbering("A.1", counterInt) + ". " + before.last().body} else{before.last().supplement + " " + str(counterInt) + ". " + before.last().body})
+            #set par(justify: false)
+            #grid(
+              columns: (auto, 1fr),
+              align: (left + horizon, right + horizon),
+              column-gutter: 0.3em,
+              [#page_number],
+              text(weight: "bold")[
+                #if appendix != none {
+                  numbering("A.1", counterInt) + ". " + before.last().body
+                } else {
+                  before.last().supplement + " " + str(counterInt) + ". " + before.last().body
+                }
+              ]
+            )
           ]
         }
       }
@@ -439,6 +451,7 @@
           v(8.4cm)
       }
       else if (heading-style-compact) {
+        set par(justify: false)
         align(right + top, block(
             width: 100%,
             stroke: 2pt + main-color,
@@ -562,6 +575,9 @@
   )
 
   my-outline(appendix-state, appendix-state-hide-parent, part-state, part-location,part-change,part-counter, main-color, textSize1: outline-part, textSize2: outline-heading1, textSize3: outline-heading2, textSize4: outline-heading3, depth: outline-depth, outline-font-size: outline-font-size)
+
+  // exclude figures without caption from the outline
+  show figure.where(caption: none): set figure(outlined: false)
 
   my-outline-sec(list-of-figure-title, figure.where(kind: image), outline-heading3)
 
