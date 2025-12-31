@@ -452,14 +452,21 @@
       }
       else if (heading-style-compact) {
         set par(justify: false)
-        align(right + top, block(
-            width: 100%,
-            stroke: 2pt + main-color,
-            inset: (left:2em, rest: 1.6em),
-            fill: white,
-            radius: 10pt,
-            align(left, text(size: title1, it, hyphenate: false))
-          ))
+        set align(right)
+        if it.numbering != none {
+          text(size: 72pt, weight: "bold")[
+            #counter(heading).display("1")
+          ]
+          v(-1.2em)
+        }
+        
+        // Stampa il testo del titolo
+        text(size: 24pt, weight: "bold")[
+          #it.body
+        ]
+        
+        v(0.5em)
+        line(length: 100%, stroke: 1.5pt)
         v(1.5cm, weak: true)
       } else {
         layout(size => {
