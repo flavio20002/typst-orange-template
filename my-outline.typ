@@ -1,19 +1,27 @@
 #let my-outline-row( textSize:none,
-                    textWeight: "regular",
-                    insetSize: 0pt,
-                    textColor: blue,
-                    number: "0",
-                    title: none,
-                    heading_page: "0",
-                    location: none) = {
+  textWeight: "regular",
+  insetSize: 0pt,
+  textColor: blue,
+  number: "0",
+  title: none,
+  heading_page: "0",
+  location: none) = {
   set text(size: textSize, fill: textColor, weight: textWeight)
-  box(width: 1.1cm, inset: (y: insetSize), align(left, number))
-  h(0.1cm)
-  box(inset: (y: insetSize), width: 100% - 1.2cm, )[
-    #set align(left) 
-    #link(location, title)
-    #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
-    #link(location, heading_page)
+  box(width: 100%, inset: (y: insetSize))[
+    #grid(
+      columns: (1.2cm, 1fr, auto),
+      align: (left+top, left, left),
+      gutter: 0pt, 
+      number,
+      [
+        #link(location, title)
+        #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)]))
+      ],
+      [
+        #h(2pt)
+        #link(location, heading_page)
+      ]
+    )
   ]
 }
 

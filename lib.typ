@@ -481,6 +481,7 @@
           }
         }
       } else if (heading-style == 1){
+        set par(justify: false)
         align(right + top, block(
           width: 100%,
           stroke: 2pt + main-color,
@@ -494,18 +495,18 @@
         set par(justify: false)
         set align(right)
         if it.numbering != none {
-          text(size: 64pt, weight: "bold")[
+          text(size: 64pt, weight: "bold", fill: main-color)[
           #counter(heading).display("1")
           ]
           v(-1.2em)
         }
 
-        text(size: 24pt, weight: "bold")[
+        text(size: 24pt, weight: "bold", fill: main-color)[
           #it.body
         ]
 
         v(0.5em)
-        line(length: 100%, stroke: 1.5pt)
+        line(length: 100%, stroke: 1.5pt + main-color)
         v(1.5cm, weak: true)
       }
 
