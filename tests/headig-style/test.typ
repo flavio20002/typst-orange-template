@@ -1,27 +1,27 @@
-#import "../lib.typ": *
+#import "../../lib.typ": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, mathcal, update-heading-image
 
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
-//#set text(font: "Lato")
+#set text(font: "Lato")
 //#show math.equation: set text(font: "Fira Math")
-//#show math.equation: set text(font: "Lato Math")
-//#show raw: set text(font: "Fira Code")
+#show math.equation: set text(font: "Lato Math")
+#show raw: set text(font: "Fira Code")
 
 #show: book.with(
   title: "Exploring the Physical Manifestation of Humanity’s Subconscious Desires",
   subtitle: "A Practical Guide",
-  date: datetime.today,
+  date: "Anno scolastico 2023-2024",
   author: "Goro Akechi",
   main-color: rgb("#F36619"),
   lang: "en",
-  cover: image("./background.svg"),
+  cover: image("./background.png"),
   image-index: image("./orange1.jpg"),
   list-of-figure-title: "List of Figures",
   list-of-table-title: "List of Tables",
   supplement-chapter: "Chapter",
   supplement-part: "Part",
   part-style: 0,
-  heading-style: 0,
+  heading-style: 2,
   copyright: [
     Copyright © 2023 Flavio Barisi
 
@@ -40,21 +40,6 @@
   ],
   lowercase-references: false
 )
-
-// Custom thmbox
-#let solution(name: none, body) = {
-  context{
-    thmbox("solution","Solution",
-    stroke: (left: 4pt + green),
-    radius: 0em,
-    inset: 0.65em,
-    namefmt: x => [*--- #x.*],
-    separator: h(0.2em),
-    titlefmt: x => text(fill: green, weight: "bold", x),
-    fill: green.lighten(90%), 
-    base_level: 1)(name:name, body)
-  }
-}
 
 #part("Part One Title") 
 
@@ -184,7 +169,7 @@ This is a theorem consisting of several equations.
 #index("Theorems!Single Line")
 This is a theorem consisting of just one line.
 #theorem()[
-  A set $scr(D)(G)$  in dense in $L^2(G)$, $|dot|_0$.
+  A set $mathcal(D)(G)$  in dense in $L^2(G)$, $|dot|_0$.
 ]
 == Definitions
 #index("Definitions")
@@ -204,7 +189,7 @@ A definition can be mathematical or it could define a concept.
   + Bounded support $G$;
   + Infinitely differentiable;
   #v(0.5em, weak: true)
-	a vector space is denoted by $scr(D)(G)$. 
+	a vector space is denoted by $mathcal(D)(G)$. 
 ]
 == Remarks
 #index("Remarks")
@@ -233,7 +218,7 @@ This is an example of a remark.
 #index("Propositions!Single Line")
 
 #proposition()[
-  	Let $f,g in L^2(G)$; if $forall phi in scr(D) (G)$, $(f,phi)_0=(g,phi)_0$ then $f = g$. 
+  	Let $f,g in L^2(G)$; if $forall phi in mathcal(D) (G)$, $(f,phi)_0=(g,phi)_0$ then $f = g$. 
 ]
 == Examples
 #index("Examples")
@@ -354,27 +339,15 @@ Referencing @figure in-text using its label and referencing @figure1 in-text usi
 
 #make-index(title: "Index")
 
-#show: appendices.with("Appendices", hide-parent: false)
+#show: appendices.with("Appendices")
 
 #chapter("Appendix Chapter Title", image: image("./orange2.jpg"))
 
 == Appendix Section Title
 
 #lorem(50)
-
-#figure(
-  image("creodocs_logo.svg", width: 50%),
-  caption: [Figure caption.],
-) <figure_appendix>
-
-
 #chapter("Appendix Chapter Title", image: image("./orange2.jpg"))
 
 == Appendix Section Title
 
 #lorem(50)
-
-#figure(
-  image("creodocs_logo.svg", width: 50%),
-  caption: [Figure caption.],
-) <figure_appendix2>

@@ -313,7 +313,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, part-font-size: auto, lowercase-references: false, padded-heading-number: true, outline-font-size: auto, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style-compact: false, first-line-indent: true, outline-depth: 3) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, part-font-size: auto, lowercase-references: false, padded-heading-number: true, outline-font-size: auto, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style: 0, first-line-indent: true, outline-depth: 3) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -429,67 +429,86 @@
       counter(figure.where(kind: image)).update(0)
       counter(figure.where(kind: table)).update(0)
       counter(math.equation).update(0)
-      context{
-        let img = heading-image.at(here())
-        if img != none {
-          set image(width: 21cm, height: 9.4cm)
-          place(move(dx: -3cm, dy: -3cm, img))
-          place( move(dx: -3cm, dy: -3cm, block(width: 21cm, height: 9.4cm, align(right + bottom, pad(bottom: 1.2cm, block(
-            width: 86%,
-            stroke: (
-                right: none,
-                rest: 2pt + main-color,
-            ),
-            inset: (left:2em, rest: 1.6em),
-            fill: rgb("#FFFFFFAA"),
-            radius: (
-                right: 0pt,
-                left: 10pt,
-            ),
-            align(left, text(size: title1, it))
-          ))))))
-          v(8.4cm)
-      }
-      else if (heading-style-compact) {
+      if (heading-style == 0){
+        context{
+          let img = heading-image.at(here())
+          if img != none {
+            set image(width: 21cm, height: 9.4cm)
+            place(move(dx: -3cm, dy: -3cm, img))
+            place(
+              move(dx: -3cm, dy: -3cm, 
+                block(width: 21cm, height: 9.4cm, 
+                  align(right + bottom, 
+                    pad(bottom: 1.2cm, 
+                      block(width: 86%,
+                        stroke: ( right: none, rest: 2pt + main-color),
+                        inset: (left:2em, rest: 1.6em),
+                        fill: rgb("#FFFFFFAA"),
+                        radius: (right: 0pt, left: 10pt),
+                        align(left, 
+                          text(size: title1, it)
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+            v(8.4cm)
+          } else {
+            layout(size => {
+            let full_width = size.width
+            move(dx: 3cm, dy: -0.5cm, 
+              align(right + top, 
+                block(
+                  width: 100% + 3cm,
+                  stroke: (right: none, rest: 2pt + main-color),
+                  inset: (left:2em, rest: 1.6em),
+                  fill: white,
+                  radius: (right: 0pt, left: 10pt),
+                  align(left, 
+                    block(width: full_width, 
+                      text(size: title1, it, 
+                        hyphenate: false
+                      )
+                    )
+                  )
+                )
+              )
+            )
+            })
+            v(1.5cm, weak: true)
+          }
+        }
+      } else if (heading-style == 1){
+        align(right + top, block(
+          width: 100%,
+          stroke: 2pt + main-color,
+          inset: (left:2em, rest: 1.6em),
+          fill: white,
+          radius: 10pt,
+          align(left, text(size: title1, it, hyphenate: false))
+        ))
+        v(1.5cm, weak: true)
+      } else if (heading-style == 2){
         set par(justify: false)
         set align(right)
         if it.numbering != none {
-          text(size: 72pt, weight: "bold")[
-            #counter(heading).display("1")
+          text(size: 64pt, weight: "bold")[
+          #counter(heading).display("1")
           ]
           v(-1.2em)
         }
-        
-        // Stampa il testo del titolo
+
         text(size: 24pt, weight: "bold")[
           #it.body
         ]
-        
+
         v(0.5em)
         line(length: 100%, stroke: 1.5pt)
         v(1.5cm, weak: true)
-      } else {
-        layout(size => {
-        let full_width = size.width
-        move(dx: 3cm, dy: -0.5cm, align(right + top, block(
-            width: 100% + 3cm,
-            stroke: (
-                right: none,
-                rest: 2pt + main-color,
-            ),
-            inset: (left:2em, rest: 1.6em),
-            fill: white,
-            radius: (
-                right: 0pt,
-                left: 10pt,
-            ),
-            align(left, block(
-            width: full_width, text(size: title1, it, hyphenate: false))
-          ))))
-        })
-        v(1.5cm, weak: true)
       }
-      }
+
       part-change.update(x =>
         false
       )
