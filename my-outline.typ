@@ -18,7 +18,7 @@
         #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)]))
       ],
       [
-        #h(2pt)
+        #h(4pt)
         #link(location, heading_page)
       ]
     )
