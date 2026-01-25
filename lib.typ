@@ -333,12 +333,14 @@
 
   set figure(gap: 1.3em)
 
-  show figure: it => align(center)[
-    #it
-    #if (it.placement == none){
+  // Use show-set for centering so users/Quarto can override for specific figure kinds
+  show figure: set align(center)
+  show figure: it => {
+    it
+    if it.placement == none {
       v(2.6em, weak: true)
     }
-  ]
+  }
 
   show terms: set par(first-line-indent: 0em)
 
