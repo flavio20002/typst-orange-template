@@ -124,20 +124,15 @@
   set figure(numbering: num =>
     numbering("A.1", counter(heading).get().first(), num)
   )
-  set heading( numbering: (..nums) => {
+  // Just return the numbering string - let the show heading rule handle positioning
+  // (Previously this returned place() which broke #ref and caused inconsistent alignment)
+  set heading(numbering: (..nums) => {
       let vals = nums.pos()
       if vals.len() == 1 {
         return str(numbering("A.1", ..vals)) + "."
       }
       else {
-        context{
-          let main-color = main-color-state.at(here())
-          let color = main-color
-          if vals.len() == 4 {
-            color = black
-          }
-          return place(dx:-4.5cm, box(width: 4cm, align(right, text(fill: color)[#numbering("A.1", ..vals)])))
-        }
+        numbering("A.1", ..vals)
       }
     },
   )
@@ -333,12 +328,14 @@
 
   set figure(gap: 1.3em)
 
-  show figure: it => align(center)[
-    #it
-    #if (it.placement == none){
+  // Use show-set for centering so users/Quarto can override for specific figure kinds
+  show figure: set align(center)
+  show figure: it => {
+    it
+    if it.placement == none {
       v(2.6em, weak: true)
     }
-  ]
+  }
 
   show terms: set par(first-line-indent: 0em)
 
