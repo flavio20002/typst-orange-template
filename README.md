@@ -24,6 +24,11 @@ This template exports the `book` function with the following named arguments:
 - `copyright`: Details about the copyright or
   `none`.
 - `lowercase-references`: True to have references in lowercase (Eg. table 1.1)
+- `list-of-figure-title`, `list-of-table-title`: Titles of the list of figures
+  and list of tables. Defaults to `none`, which omits the list.
+- `list-of-figure-target`, `list-of-table-target`: Selectors for the figures
+  included in each list. Default to `figure.where(kind: image)` and
+  `figure.where(kind: table)`.
 
 The function also accepts a single, positional argument for the body of the
 book.

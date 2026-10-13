@@ -308,7 +308,7 @@
   }
 }
 
-#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, part-font-size: auto, lowercase-references: false, padded-heading-number: true, outline-font-size: auto, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style: 0, first-line-indent: true, outline-depth: 3) = {
+#let book(title: "", subtitle: "", date: "", author: (), paper-size: "a4", width: none, height: none, margin: (x: 3cm, bottom: 2.5cm, top: 3cm), logo: none, cover: none, cover-background: auto, image-index:none, body, main-color: blue, copyright: [], lang: "en", list-of-figure-title: none, list-of-table-title: none, list-of-figure-target: figure.where(kind: image), list-of-table-target: figure.where(kind: table), supplement-chapter: "Chapter", supplement-part: "Part", font-size: 10pt, part-style: 0, part-font-size: auto, lowercase-references: false, padded-heading-number: true, outline-font-size: auto, outline-small-depth: 2, outline-small-width: 9.5cm, heading-style: 0, first-line-indent: true, outline-depth: 3) = {
   set document(author: author, title: title)
   set text(size: font-size, lang: lang)
   set par(leading: 0.5em)
@@ -603,9 +603,13 @@
   // exclude figures without caption from the outline
   show figure.where(caption: none): set figure(outlined: false)
 
-  my-outline-sec(list-of-figure-title, figure.where(kind: image), outline-heading3)
+  if list-of-figure-title != none {
+    my-outline-sec(list-of-figure-title, list-of-figure-target, outline-heading3)
+  }
 
-  my-outline-sec(list-of-table-title, figure.where(kind: table), outline-heading3)
+  if list-of-table-title != none {
+    my-outline-sec(list-of-table-title, list-of-table-target, outline-heading3)
+  }
 
 
   // Main body.
